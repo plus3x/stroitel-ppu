@@ -1,5 +1,7 @@
 StroitelPpu::Application.routes.draw do
 
+  resources :services
+
   root to: 'main#index', as: 'main'
 
   get 'contacts' => 'contacts#index'
