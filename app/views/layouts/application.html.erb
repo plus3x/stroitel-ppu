@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>StroitelPpu</title>
+  <title>CertificatesStore</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body id="<%= controller.controller_name %>">
+  <div id="banner">
+    <% image_tag("logo.png") %>
+    <%= @page_title || t('.title') %>
+  </div>
+  <div id="columns">
+    <div id="side"> 
+      <ul>
+        <li><%= link_to_unless_current t('.main_page'),  main_path %></li>
+      </ul>
+    </div>
+    <div id="main"> 
+    
+      <%= yield %>
+    
+    </div>
+    <div id="footer">
+      <%= t '.сopyright' %>
+    </div>
+  </div>
 </body>
 </html>
+
