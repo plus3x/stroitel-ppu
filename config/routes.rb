@@ -1,12 +1,12 @@
 StroitelPpu::Application.routes.draw do
 
-  resources :products
-
-  resources :type_of_products
-
-  resources :services
-
   root to: 'main#index', as: 'main'
+  
+  resources :services do
+    resources :type_of_products do 
+      resources :products
+    end
+  end
 
   get 'contacts' => 'contacts#index'
   get 'about' => 'about#index'
