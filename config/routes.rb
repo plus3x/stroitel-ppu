@@ -1,5 +1,7 @@
 StroitelPpu::Application.routes.draw do
 
+  resources :products
+
   resources :type_of_products
 
   resources :services
