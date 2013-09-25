@@ -1,5 +1,6 @@
 StroitelPpu::Application.routes.draw do
   
+  get "contacts/index"
   root to: 'main#index', as: 'main'
   
   # The priority is based upon order of creation: first created -> highest priority.
