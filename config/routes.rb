@@ -1,5 +1,7 @@
 StroitelPpu::Application.routes.draw do
 
+  resources :type_of_products
+
   resources :services
 
   root to: 'main#index', as: 'main'
