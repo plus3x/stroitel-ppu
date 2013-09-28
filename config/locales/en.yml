@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  layouts:
+    application:
+      title: Stroitel PPU

@@ -1,6 +1,7 @@
 <h1>Main#index</h1>
 <p>Find me in app/views/main/index.html.erb</p>
 <div id='services'>
+  <h1><%= t '.list_of_sevices' %></h1>
   <% Service.all.each do |service| %>
     <%= link_to service.name, service %>
   <% end %>
