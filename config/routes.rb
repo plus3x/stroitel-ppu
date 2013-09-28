@@ -1,5 +1,7 @@
 StroitelPpu::Application.routes.draw do
 
+  resources :users
+
   root to: 'main#index', as: 'main'
   
   resources :services do
