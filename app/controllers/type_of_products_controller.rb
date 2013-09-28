@@ -28,7 +28,7 @@ class TypeOfProductsController < ApplicationController
 
     respond_to do |format|
       if @type_of_product.save
-        format.html { redirect_to @type_of_product, notice: 'Type of product was successfully created.' }
+        format.html { redirect_to [Service.last, @type_of_product], notice: 'Type of product was successfully created.' }
         format.json { render action: 'show', status: :created, location: @type_of_product }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class TypeOfProductsController < ApplicationController
   def update
     respond_to do |format|
       if @type_of_product.update(type_of_product_params)
-        format.html { redirect_to @type_of_product, notice: 'Type of product was successfully updated.' }
+        format.html { redirect_to [Service.last, @type_of_product], notice: 'Type of product was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

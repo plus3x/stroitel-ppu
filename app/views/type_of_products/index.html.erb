@@ -20,9 +20,9 @@
         <td><%= type_of_product.title %></td>
         <td><%= type_of_product.description %></td>
         <td><%= type_of_product.picture_url %></td>
-        <td><%= link_to 'Show', type_of_product %></td>
-        <td><%= link_to 'Edit', edit_type_of_product_path(type_of_product) %></td>
-        <td><%= link_to 'Destroy', type_of_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [Service.last, type_of_product] %></td>
+        <td><%= link_to 'Edit', edit_service_type_of_product_path(Service.last, type_of_product) %></td>
+        <td><%= link_to 'Destroy', [Service.last, type_of_product], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Type of product', new_type_of_product_path %>
+<%= link_to 'New Type of product', new_service_type_of_product_path(Service.last) %>
