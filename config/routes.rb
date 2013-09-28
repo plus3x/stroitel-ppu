@@ -1,13 +1,15 @@
 StroitelPpu::Application.routes.draw do
 
-  get "admin/index"
-  get "sessions/new"
-  get "sessions/create"
-  get "sessions/destroy"
-  resources :users
-
   root to: 'main#index', as: 'main'
   
+  resources :users
+  
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+    
   resources :services do
     resources :type_of_products do 
       resources :products
@@ -17,6 +19,7 @@ StroitelPpu::Application.routes.draw do
   get 'contacts' => 'contacts#index'
   get 'about' => 'about#index'
   get 'production' => 'production#index'
+  get 'admin' => 'admin#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
