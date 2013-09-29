@@ -20,5 +20,5 @@
   <%= @product.picture_url %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Edit', edit_service_type_of_product_product_path(Service.first, TypeOfProduct.first, @product) %> |
+<%= link_to 'Back', service_type_of_product_products_path(Service.first, TypeOfProduct.first) %>

@@ -20,5 +20,13 @@
   <%= @type_of_product.picture_url %>
 </p>
 
-<%= link_to 'Edit', edit_service_type_of_product_path(Service.last, @type_of_product) %> |
-<%= link_to 'Back', service_type_of_products_path(Service.last) %>
+<div id='product'>
+  <h1><%= t '.product' %></h1>
+  <% Product.all.each do |product| %>
+    <%= link_to product.name, [Service.first, @type_of_product, product] %>
+  <% end %>
+  <%= link_to 'New product', new_service_type_of_product_product_path(Service.first, @type_of_product) %>
+</div>
+
+<%= link_to 'Edit', edit_service_type_of_product_path(Service.first, @type_of_product) %> |
+<%= link_to 'Back', service_type_of_products_path(Service.first) %>
