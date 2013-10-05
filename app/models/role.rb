@@ -6,7 +6,7 @@ class Role < ActiveRecord::Base
       when 'admin'
         true
       when 'manager'
-        request_to controller: [:sessions, :services, :type_of_products, :products]
+        request_to controller: [:sessions, :services, :type_of_products, :products, :orders]
       else
         false
       end

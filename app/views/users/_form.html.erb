@@ -24,6 +24,10 @@
         <%= f.label :password_confirmation, 'Confirm:' %>
         <%= f.password_field :password_confirmation, size: 40 %>
       </div>
+      <div class="field">
+        <%= f.label :role %>
+        <%= f.collection_select :role_id, Role.all, :id, :title %>
+      </div>
       <div class="actions">
         <%= f.submit %>
       </div>

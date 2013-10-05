@@ -1,12 +1,13 @@
 StroitelPpu::Application.routes.draw do
 
+  resources :orders
+
   root to: 'main#index', as: 'main'
   
-  resources :users
-  
+  resources :users  
   controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
+    get    'login'  => :new
+    post   'login'  => :create
     delete 'logout' => :destroy
   end
     

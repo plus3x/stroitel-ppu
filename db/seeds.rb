@@ -63,3 +63,15 @@ if products[0].save and products[1].save and products[2].save
 else
   puts '>>> Product list not created!'
 end
+
+Order.destroy_all
+orders = Order.create([
+  { id: 1, email: 'user@user.com', description: 'Order description' },
+  { id: 2, email: 'user@user.com', description: 'Order description' },
+  { id: 3, email: 'user@user.com', description: 'Order description' }
+])
+if orders[0].save and orders[1].save and orders[2].save
+  puts "Default orders: " + orders.map(&:email).join(', ')
+else
+  puts '>>> Order list not created!'
+end
