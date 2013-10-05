@@ -16,10 +16,10 @@ StroitelPpu::Application.routes.draw do
     end
   end
 
-  get 'contacts' => 'contacts#index'
-  get 'about' => 'about#index'
+  get 'contacts'   =>   'contacts#index'
+  get 'about'      =>      'about#index'
   get 'production' => 'production#index'
-  get 'admin' => 'admin#index'
+  get 'admin'      =>      'admin#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

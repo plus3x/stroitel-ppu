@@ -12,12 +12,14 @@ class ServicesControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
+    login_as :manager
     get :new
     assert_response :success
   end
 
   test "should create service" do
-    assert_difference('Service.count') do
+    login_as :manager
+    assert_difference 'Service.count' do
       post :create, service: { description: @service.description, name: @service.name, picture_url: @service.picture_url, title: @service.title }
     end
 
@@ -30,17 +32,20 @@ class ServicesControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
+    login_as :manager
     get :edit, id: @service
     assert_response :success
   end
 
   test "should update service" do
+    login_as :manager
     patch :update, id: @service, service: { description: @service.description, name: @service.name, picture_url: @service.picture_url, title: @service.title }
     assert_redirected_to service_path(assigns(:service))
   end
 
   test "should destroy service" do
-    assert_difference('Service.count', -1) do
+    login_as :manager
+    assert_difference 'Service.count', -1 do
       delete :destroy, id: @service
     end
 

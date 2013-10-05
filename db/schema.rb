@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20130928050340) do
 
   create_table "products", force: true do |t|
+    t.integer  "type_of_product_id"
     t.string   "name"
     t.string   "title"
     t.text     "description"
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 20130928050340) do
   end
 
   create_table "type_of_products", force: true do |t|
+    t.integer  "service_id"
     t.string   "name"
     t.string   "title"
     t.text     "description"

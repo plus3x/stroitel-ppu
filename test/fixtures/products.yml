@@ -5,9 +5,11 @@ one:
   title: MyString
   description: MyText
   picture_url: MyString
+  type_of_product: one
 
 two:
   name: MyString
   title: MyString
   description: MyText
   picture_url: MyString
+  type_of_product: two

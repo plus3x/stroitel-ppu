@@ -1,6 +1,7 @@
 class CreateTypeOfProducts < ActiveRecord::Migration
   def change
     create_table :type_of_products do |t|
+      t.belongs_to :service
       t.string :name
       t.string :title
       t.text :description

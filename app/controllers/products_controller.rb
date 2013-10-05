@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    @service = Service.find(params[:service_id])
+    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
 
   # GET /products/1
@@ -15,20 +17,29 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @service = Service.find(params[:service_id])
+    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
 
   # GET /products/1/edit
   def edit
+    @service = Service.find(params[:service_id])
+    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @product.type_of_product = TypeOfProduct.find(params[:type_of_product_id])
+    @product.type_of_product.service = Service.find(params[:service_id])
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html {
+          redirect_to [@product.type_of_product.service, @product.type_of_product, @product], 
+          notice: 'Product was successfully created.'
+        }
         format.json { render action: 'show', status: :created, location: @product }
       else
         format.html { render action: 'new' }
@@ -40,9 +51,11 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @service = Service.find(params[:service_id])
+    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to [@service, @type_of_product, @product], notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -56,7 +69,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url }
+      format.html { redirect_to service_type_of_products_url }
       format.json { head :no_content }
     end
   end
