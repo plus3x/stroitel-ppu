@@ -51,4 +51,16 @@ class OrdersControllerTest < ActionController::TestCase
 
     assert_redirected_to orders_path
   end
+
+  test "invoice after create new order" do
+    email = "client@mail.com"
+    assert_difference 'UserNotifier.deliveries.count' do
+      assert_difference 'Order.count' do
+        post :create, order: { email: email, description: @order.description }
+      end
+    end
+    mail = UserNotifier.deliveries.last
+    assert_equal I18n.t('user_notifier.invoice.subject'), mail.subject
+    assert_equal [email], mail.to
+  end
 end

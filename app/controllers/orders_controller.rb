@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authorize, except: [:new, :create]
+  after_action :send_invoice, only: [:create]
 
   # GET /orders
   # GET /orders.json
@@ -63,6 +64,11 @@ class OrdersController < ApplicationController
   end
 
   private
+    
+    def send_invoice
+      UserNotifier.invoice(order_params[:email]).deliver
+    end
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
