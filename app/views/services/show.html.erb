@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<div class='path'>
+  <%= link_to 'Main', main_path %> /
+  <%= link_to @service.name, '' %>
+</div>
+
 <p>
   <strong>Name:</strong>
   <%= @service.name %>
@@ -25,11 +30,11 @@
   <% TypeOfProduct.all.each do |type_of_product| %>
     <%= link_to type_of_product.name, [@service, type_of_product] %>
   <% end %>
-  <%= link_to 'New type of product', new_service_type_of_product_path(@service) %>
 </div>
 
 <% if current_user %>
   <% if current_user.manager? or current_user.admin? %>
+    <%= link_to 'New type of product', new_service_type_of_product_path(@service) %>
     <%= link_to 'Edit', edit_service_path(@service) %> |
     <%= link_to 'Back', services_path %>
   <% end %>

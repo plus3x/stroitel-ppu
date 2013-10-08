@@ -1,5 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+<div class='path'>
+  <%= link_to 'Main', main_path %> /
+  <%= link_to @service.name, @service %> /
+  <%= link_to @type_of_product.name, [@service, @type_of_product] %> /
+  <%= link_to @product.name, '' %>
+</div>
+
 <p>
   <strong>Name:</strong>
   <%= @product.name %>

@@ -10,6 +10,8 @@ class ProductsController < ApplicationController
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/1
   def show
+    @service = Service.find(params[:service_id])
+    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/new
