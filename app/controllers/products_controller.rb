@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, except: [:show, :index]
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products
   def index
