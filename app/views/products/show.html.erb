@@ -12,7 +12,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @product.description %>
+  <%=raw @product.description %>
 </p>
 
 <p>
@@ -20,5 +20,9 @@
   <%= @product.picture_url %>
 </p>
 
-<%= link_to 'Edit', edit_service_type_of_product_product_path(Service.first, TypeOfProduct.first, @product) %> |
-<%= link_to 'Back', service_type_of_product_products_path(Service.first, TypeOfProduct.first) %>
+<% if current_user %>
+  <% if current_user.manager? or current_user.admin? %>
+    <%= link_to 'Edit', edit_service_type_of_product_product_path(@service, @type_of_product, @product) %> |
+    <%= link_to 'Back', service_type_of_product_products_path(@service, @type_of_product) %>
+  <% end %>
+<% end %>

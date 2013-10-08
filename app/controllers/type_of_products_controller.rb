@@ -1,30 +1,28 @@
 class TypeOfProductsController < ApplicationController
   before_action :set_type_of_product, only: [:show, :edit, :update, :destroy]
 
-  # GET /type_of_products
-  # GET /type_of_products.json
+  # GET /services/:service_id/type_of_products
   def index
     @type_of_products = TypeOfProduct.all
   end
 
-  # GET /type_of_products/1
-  # GET /type_of_products/1.json
+  # GET /services/:service_id/type_of_products/1
   def show
+    @service = Service.find(params[:service_id])
   end
 
-  # GET /type_of_products/new
+  # GET /services/:service_id/type_of_products/new
   def new
     @type_of_product = TypeOfProduct.new
     @service = Service.find(params[:service_id])
   end
 
-  # GET /type_of_products/1/edit
+  # GET /services/:service_id/type_of_products/1/edit
   def edit
     @service = Service.find(params[:service_id])
   end
 
-  # POST /type_of_products
-  # POST /type_of_products.json
+  # POST /services/:service_id/type_of_products
   def create
     @type_of_product = TypeOfProduct.new(type_of_product_params)
     @type_of_product.service = Service.find(params[:service_id])
@@ -32,36 +30,29 @@ class TypeOfProductsController < ApplicationController
     respond_to do |format|
       if @type_of_product.save
         format.html { redirect_to [@type_of_product.service, @type_of_product], notice: 'Type of product was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @type_of_product }
       else
         format.html { render action: 'new' }
-        format.json { render json: @type_of_product.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /type_of_products/1
-  # PATCH/PUT /type_of_products/1.json
+  # PATCH/PUT /services/:service_id/type_of_products/1
   def update
     @service = Service.find(params[:service_id])
     respond_to do |format|
       if @type_of_product.update(type_of_product_params)
         format.html { redirect_to [@service, @type_of_product], notice: 'Type of product was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @type_of_product.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /type_of_products/1
-  # DELETE /type_of_products/1.json
+  # DELETE /services/:service_id/type_of_products/1
   def destroy
     @type_of_product.destroy
     respond_to do |format|
       format.html { redirect_to service_url }
-      format.json { head :no_content }
     end
   end
 

@@ -12,7 +12,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @type_of_product.description %>
+  <%=raw @type_of_product.description %>
 </p>
 
 <p>
@@ -23,10 +23,14 @@
 <div id='product'>
   <h1><%= t '.product' %></h1>
   <% Product.all.each do |product| %>
-    <%= link_to product.name, [Service.first, @type_of_product, product] %>
+    <%= link_to product.name, [@service, @type_of_product, product] %>
   <% end %>
-  <%= link_to 'New product', new_service_type_of_product_product_path(Service.first, @type_of_product) %>
+  <%= link_to 'New product', new_service_type_of_product_product_path(@service, @type_of_product) %>
 </div>
 
-<%= link_to 'Edit', edit_service_type_of_product_path(Service.first, @type_of_product) %> |
-<%= link_to 'Back', service_type_of_products_path(Service.first) %>
+<% if current_user %>
+  <% if current_user.manager? or current_user.admin? %>
+    <%= link_to 'Edit', edit_service_type_of_product_path(@service, @type_of_product) %> |
+    <%= link_to 'Back', service_type_of_products_path(@service) %>
+  <% end %>
+<% end %>

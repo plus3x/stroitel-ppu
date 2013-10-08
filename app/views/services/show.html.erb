@@ -12,7 +12,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @service.description %>
+  <%=raw @service.description %>
 </p>
 
 <p>
@@ -28,5 +28,9 @@
   <%= link_to 'New type of product', new_service_type_of_product_path(@service) %>
 </div>
 
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+<% if current_user %>
+  <% if current_user.manager? or current_user.admin? %>
+    <%= link_to 'Edit', edit_service_path(@service) %> |
+    <%= link_to 'Back', services_path %>
+  <% end %>
+<% end %>
