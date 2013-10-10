@@ -64,6 +64,27 @@ else
   puts '>>> Product list not created!'
 end
 
+SeoMeta.destroy_all
+seometa = [
+  { id: 1, keywords: 'Service meta key words',         description: 'Service meta description' },
+  { id: 2, keywords: 'Service meta key words',         description: 'Service meta description' },
+  { id: 3, keywords: 'Service meta key words',         description: 'Service meta description' },
+  { id: 4, keywords: 'Type of product meta key words', description: 'Type of product meta description' },
+  { id: 5, keywords: 'Type of product meta key words', description: 'Type of product meta description' },
+  { id: 6, keywords: 'Type of product meta key words', description: 'Type of product meta description' },
+  { id: 7, keywords: 'Product meta key words',         description: 'Product meta description' },
+  { id: 8, keywords: 'Product meta key words',         description: 'Product meta description' },
+  { id: 9, keywords: 'Product meta key words',         description: 'Product meta description' }
+]
+print "Default seo meta: "
+SeoMeta.create(seometa).each do |seo_meta|
+  if seo_meta.save
+    print seo_meta.id
+  else
+    puts '>>> Seo meta not created!'
+  end
+end
+
 Order.destroy_all
 orders = Order.create([
   { id: 1, email: 'user@user.com', description: 'Order description' },
