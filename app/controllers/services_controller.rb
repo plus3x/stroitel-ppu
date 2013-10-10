@@ -4,11 +4,15 @@ class ServicesController < ApplicationController
 
   # GET /services
   def index
+    @meta_keywords = 'Трубы Трубень Трубенище Отрубеть'
+    @meta_description = 'Три тыщи труб тебе в зад!'
     @services = Service.all
   end
 
   # GET /services/1
   def show
+    @meta_keywords = 'Трубы Трубень Трубенище Отрубеть'
+    @meta_description = 'Три тыщи труб тебе в зад!'
   end
 
   # GET /services/new

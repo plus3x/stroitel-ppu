@@ -5,6 +5,10 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= tag 'meta', name: 'robots', content: 'all' %>
+  <%= tag 'meta', name: 'yandex', content: 'all' %>
+  <%= tag 'meta', name: 'Keywords',    content: (@meta_keywords    || 'Трубы') %>
+  <%= tag 'meta', name: 'Description', content: (@meta_description || 'Трубы') %>
 </head>
 <body id="<%= controller.controller_name %>">
   <div id="banner">

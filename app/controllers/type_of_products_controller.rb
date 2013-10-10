@@ -4,11 +4,15 @@ class TypeOfProductsController < ApplicationController
 
   # GET /services/:service_id/type_of_products
   def index
+    @meta_keywords = 'Трубы Трубень Трубенище Отрубеть'
+    @meta_description = 'Три тыщи труб тебе в зад!'
     @type_of_products = TypeOfProduct.all
   end
 
   # GET /services/:service_id/type_of_products/1
   def show
+    @meta_keywords = 'Трубы Трубень Трубенище Отрубеть'
+    @meta_description = 'Три тыщи труб тебе в зад!'
     @service = Service.find(params[:service_id])
   end
 

@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products
   def index
+    @meta_keywords = 'Трубы Трубень Трубенище Отрубеть'
+    @meta_description = 'Три тыщи труб тебе в зад!'
     @products = Product.all
     @service = Service.find(params[:service_id])
     @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
@@ -11,6 +13,8 @@ class ProductsController < ApplicationController
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/1
   def show
+    @meta_keywords = 'Трубы Трубень Трубенище Отрубеть'
+    @meta_description = 'Три тыщи труб тебе в зад!'
     @service = Service.find(params[:service_id])
     @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
