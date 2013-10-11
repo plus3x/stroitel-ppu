@@ -13,8 +13,8 @@ class ProductsController < ApplicationController
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/1
   def show
-    @meta_keywords = 'Трубы Трубень Трубенище Отрубеть'
-    @meta_description = 'Три тыщи труб тебе в зад!'
+    @meta_keywords = @product.seo_meta.keywords
+    @meta_description = @product.seo_meta.description
     @service = Service.find(params[:service_id])
     @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/new
   def new
     @product = Product.new
+    @product.seo_meta = SeoMeta.new
     @service = Service.find(params[:service_id])
     @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
@@ -35,13 +36,15 @@ class ProductsController < ApplicationController
   # POST /services/:service_id/type_of_products/:type_of_product_id/products
   def create
     @product = Product.new(product_params)
-    @product.type_of_product = TypeOfProduct.find(params[:type_of_product_id])
-    @product.type_of_product.service = Service.find(params[:service_id])
-
+    @product_seo_meta = SeoMeta.new(product_params[:seo_meta_attributes])
+    @service = Service.find(params[:service_id])
+    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
+    @product.type_of_product = @type_of_product
+    @product.type_of_product.service = @service
     respond_to do |format|
-      if @product.save
+      if @product.save and @product_seo_meta.save
         format.html {
-          redirect_to [@product.type_of_product.service, @product.type_of_product, @product], 
+          redirect_to [@service, @type_of_product, @product], 
           notice: 'Product was successfully created.'
         }
       else
@@ -55,7 +58,7 @@ class ProductsController < ApplicationController
     @service = Service.find(params[:service_id])
     @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
     respond_to do |format|
-      if @product.update(product_params)
+      if @product.update(product_params) and @product.seo_meta.update(product_params[:seo_meta_attributes])
         format.html { redirect_to [@service, @type_of_product, @product], notice: 'Product was successfully updated.' }
       else
         format.html { render action: 'edit' }
@@ -65,6 +68,7 @@ class ProductsController < ApplicationController
 
   # DELETE /services/:service_id/type_of_products/:type_of_product_id/products/1
   def destroy
+    @product.seo_meta.destroy
     @product.destroy
     respond_to do |format|
       format.html { redirect_to service_type_of_products_url }
@@ -79,6 +83,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :title, :description, :picture_url)
+      params.require(:product).permit(:name, :title, :description, :picture_url, seo_meta_attributes: [:keywords, :description])
     end
 end

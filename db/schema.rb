@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20131010210244) do
   create_table "seo_meta", force: true do |t|
     t.integer  "service_id"
     t.integer  "type_of_product_id"
-    t.integer  "products_id"
+    t.integer  "product_id"
     t.string   "keywords"
     t.string   "description"
     t.datetime "created_at"

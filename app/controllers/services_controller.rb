@@ -11,13 +11,14 @@ class ServicesController < ApplicationController
 
   # GET /services/1
   def show
-    @meta_keywords = 'Трубы Трубень Трубенище Отрубеть'
-    @meta_description = 'Три тыщи труб тебе в зад!'
+    @meta_keywords = @service.seo_meta.keywords
+    @meta_description = @service.seo_meta.description
   end
 
   # GET /services/new
   def new
     @service = Service.new
+    @service.seo_meta = SeoMeta.new
   end
 
   # GET /services/1/edit
@@ -27,9 +28,9 @@ class ServicesController < ApplicationController
   # POST /services
   def create
     @service = Service.new(service_params)
-
+    @service_seo_meta = SeoMeta.new(service_params[:seo_meta_attributes])
     respond_to do |format|
-      if @service.save
+      if @service.save and @service_seo_meta.save
         format.html { redirect_to @service, notice: 'Service was successfully created.' }
       else
         format.html { render action: 'new' }
@@ -40,7 +41,7 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1
   def update
     respond_to do |format|
-      if @service.update(service_params)
+      if @service.update(service_params) and @service.seo_meta.update(service_params[:seo_meta_attributes])
         format.html { redirect_to @service, notice: 'Service was successfully updated.' }
       else
         format.html { render action: 'edit' }
@@ -50,6 +51,7 @@ class ServicesController < ApplicationController
 
   # DELETE /services/1
   def destroy
+    @service.seo_meta.destroy
     @service.destroy
     respond_to do |format|
       format.html { redirect_to services_url }
@@ -64,6 +66,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name, :title, :description, :picture_url)
+      params.require(:service).permit(:name, :title, :description, :picture_url, seo_meta_attributes: [:keywords, :description])
     end
 end

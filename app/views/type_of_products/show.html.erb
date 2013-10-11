@@ -27,10 +27,7 @@
 </p>
 
 <div id='product'>
-  <h1><%= t '.product' %></h1>
-  <% Product.all.each do |product| %>
-    <%= link_to product.name, [@service, @type_of_product, product] %>
-  <% end %>
+  <%= render @type_of_product.products  %>
 </div>
 
 <% if current_user %>

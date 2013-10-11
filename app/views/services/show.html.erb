@@ -25,12 +25,9 @@
   <%= @service.picture_url %>
 </p>
 
-<div id='type_of_product'>
-  <h1><%= t '.type_of_product' %></h1>
-  <% TypeOfProduct.all.each do |type_of_product| %>
-    <%= link_to type_of_product.name, [@service, type_of_product] %>
-  <% end %>
-</div>
+<ul id='type_of_products'>
+  <%= render @service.type_of_products  %>
+</ul>
 
 <% if current_user %>
   <% if current_user.manager? or current_user.admin? %>

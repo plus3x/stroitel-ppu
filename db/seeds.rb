@@ -66,15 +66,15 @@ end
 
 SeoMeta.destroy_all
 seometa = [
-  { id: 1, keywords: 'Service meta key words',         description: 'Service meta description' },
-  { id: 2, keywords: 'Service meta key words',         description: 'Service meta description' },
-  { id: 3, keywords: 'Service meta key words',         description: 'Service meta description' },
-  { id: 4, keywords: 'Type of product meta key words', description: 'Type of product meta description' },
-  { id: 5, keywords: 'Type of product meta key words', description: 'Type of product meta description' },
-  { id: 6, keywords: 'Type of product meta key words', description: 'Type of product meta description' },
-  { id: 7, keywords: 'Product meta key words',         description: 'Product meta description' },
-  { id: 8, keywords: 'Product meta key words',         description: 'Product meta description' },
-  { id: 9, keywords: 'Product meta key words',         description: 'Product meta description' }
+  { id: 1, keywords: 'Service meta key words',         description: 'Service meta description', service_id: 1 },
+  { id: 2, keywords: 'Service meta key words',         description: 'Service meta description', service_id: 2 },
+  { id: 3, keywords: 'Service meta key words',         description: 'Service meta description', service_id: 3 },
+  { id: 4, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 1 },
+  { id: 5, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 2 },
+  { id: 6, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 3 },
+  { id: 7, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 1 },
+  { id: 8, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 2 },
+  { id: 9, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 3 }
 ]
 print "Default seo meta: "
 SeoMeta.create(seometa).each do |seo_meta|
@@ -84,6 +84,7 @@ SeoMeta.create(seometa).each do |seo_meta|
     puts '>>> Seo meta not created!'
   end
 end
+print "\n"
 
 Order.destroy_all
 orders = Order.create([

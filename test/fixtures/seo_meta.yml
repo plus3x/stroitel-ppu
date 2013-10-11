@@ -1,9 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  product: one
   keywords: MyString
   description: MyString
 
 two:
+  product: two
+  keywords: MyString
+  description: MyString
+  
+three:
+  service_id: one
+  keywords: MyString
+  description: MyString
+  
+four:
+  service_id: two
+  keywords: MyString
+  description: MyString
+  
+five:
+  type_of_product_id: one
+  keywords: MyString
+  description: MyString
+  
+six:
+  type_of_product_id: two
   keywords: MyString
   description: MyString
