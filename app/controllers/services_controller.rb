@@ -15,7 +15,7 @@ class ServicesController < ApplicationController
   def show
     @type_of_products = @service.type_of_products
     expires_in 10.minutes, public: true
-    fresh_when @type_of_products, public: true
+    fresh_when [@type_of_products, current_user], public: true
     @meta_keywords = @service.seo_meta.keywords
     @meta_description = @service.seo_meta.description
   end
