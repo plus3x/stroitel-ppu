@@ -18,6 +18,8 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    expires_in 10.minutes, public: true
+    fresh_when current_user, public: true
     @order = Order.new
   end
 
