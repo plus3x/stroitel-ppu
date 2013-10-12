@@ -11,21 +11,21 @@ two:
   description: MyString
   
 three:
-  service_id: one
+  service: one
   keywords: MyString
   description: MyString
   
 four:
-  service_id: two
+  service: two
   keywords: MyString
   description: MyString
   
 five:
-  type_of_product_id: one
+  type_of_product: one
   keywords: MyString
   description: MyString
   
 six:
-  type_of_product_id: two
+  type_of_product: two
   keywords: MyString
   description: MyString

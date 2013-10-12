@@ -79,7 +79,7 @@ seometa = [
 print "Default seo meta: "
 SeoMeta.create(seometa).each do |seo_meta|
   if seo_meta.save
-    print seo_meta.id
+    print "#{seo_meta.id}, "
   else
     puts '>>> Seo meta not created!'
   end
