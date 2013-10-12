@@ -1,3 +1,5 @@
-<li>
-  <%= link_to product.name, [@service, @type_of_product, product] %>
-</li>
+<% cache product do %>
+  <li>
+    <%= link_to product.name, [@service, @type_of_product, product] %>
+  </li>
+<% end %>

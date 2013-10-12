@@ -27,7 +27,9 @@
 </p>
 
 <div id='product'>
-  <%= render @type_of_product.products  %>
+  <% cache @products do %>
+    <%= render @products  %>
+  <% end %>
 </div>
 
 <% if current_user %>

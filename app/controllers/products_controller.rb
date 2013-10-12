@@ -4,15 +4,19 @@ class ProductsController < ApplicationController
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products
   def index
+    @products = Product.all
+    expires_in 10.minutes, public: true
+    fresh_when @products, public: true
     @meta_keywords = 'Трубы Трубень Трубенище Отрубеть'
     @meta_description = 'Три тыщи труб тебе в зад!'
-    @products = Product.all
     @service = Service.find(params[:service_id])
     @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/1
   def show
+    expires_in 10.minutes, public: true
+    fresh_when @product, public: true
     @meta_keywords = @product.seo_meta.keywords
     @meta_description = @product.seo_meta.description
     @service = Service.find(params[:service_id])

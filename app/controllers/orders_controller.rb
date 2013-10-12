@@ -6,10 +6,14 @@ class OrdersController < ApplicationController
   # GET /orders
   def index
     @orders = Order.all
+    expires_in 10.minutes, public: true
+    fresh_when @orders, public: true
   end
 
   # GET /orders/1
   def show
+    expires_in 10.minutes, public: true
+    fresh_when @order, public: true
   end
 
   # GET /orders/new
