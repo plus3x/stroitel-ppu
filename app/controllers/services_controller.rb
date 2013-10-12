@@ -5,7 +5,7 @@ class ServicesController < ApplicationController
   # GET /services
   def index
     @services = Service.all
-    expires_in 10.minutes, public: true
+    expires_in 5.minutes, public: true
     fresh_when @services, public: true
     @meta_keywords = 'Трубы Трубень Трубенище Отрубеть'
     @meta_description = 'Три тыщи труб тебе в зад!'
@@ -14,7 +14,7 @@ class ServicesController < ApplicationController
   # GET /services/1
   def show
     @type_of_products = @service.type_of_products
-    expires_in 10.minutes, public: true
+    expires_in 5.minutes, public: true
     fresh_when [@type_of_products, current_user], public: true
     @meta_keywords = @service.seo_meta.keywords
     @meta_description = @service.seo_meta.description
