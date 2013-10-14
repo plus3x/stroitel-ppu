@@ -5,6 +5,7 @@ class ProductsControllerTest < ActionController::TestCase
     @product = products(:one)
     @service = services(:one)
     @type_of_product = type_of_products(:one)
+    @seo_meta = seo_meta(:one)
   end
 
   test "should get index" do
@@ -23,10 +24,15 @@ class ProductsControllerTest < ActionController::TestCase
     login_as :manager
     assert_difference 'Product.count' do
       post :create, 
-        product: { description: @product.description, name: @product.name, picture_url: @product.picture_url, title: @product.title },
+        product: { 
+          description: @product.description, 
+          name:        @product.name, 
+          picture_url: @product.picture_url, 
+          title:       @product.title,
+          seo_meta:    @seo_meta
+        },
         service_id: @service, type_of_product_id: @type_of_product
     end
-
     assert_redirected_to [@service, @type_of_product, assigns(:product)]
   end
 
@@ -45,7 +51,13 @@ class ProductsControllerTest < ActionController::TestCase
     login_as :manager
     patch :update, 
       id: @product, 
-      product: { description: @product.description, name: @product.name, picture_url: @product.picture_url, title: @product.title },
+      product: {
+        description: @product.description,
+        name:        @product.name,
+        picture_url: @product.picture_url,
+        title:       @product.title,
+        seo_meta:    @seo_meta
+      },
       service_id: @service, type_of_product_id: @type_of_product
     assert_redirected_to [@service, @type_of_product, assigns(:product)]
   end

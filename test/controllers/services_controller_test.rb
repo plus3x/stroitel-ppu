@@ -3,6 +3,7 @@ require 'test_helper'
 class ServicesControllerTest < ActionController::TestCase
   setup do
     @service = services(:one)
+    @seo_meta = seo_meta(:one)
   end
 
   test "should get index" do
@@ -20,7 +21,14 @@ class ServicesControllerTest < ActionController::TestCase
   test "should create service" do
     login_as :manager
     assert_difference 'Service.count' do
-      post :create, service: { description: @service.description, name: @service.name, picture_url: @service.picture_url, title: @service.title }
+      post :create,
+        service: {
+          description: @service.description,
+          name:        @service.name,
+          picture_url: @service.picture_url,
+          title:       @service.title,
+          seo_meta:    @seo_meta
+        }
     end
 
     assert_redirected_to service_path(assigns(:service))
@@ -39,7 +47,14 @@ class ServicesControllerTest < ActionController::TestCase
 
   test "should update service" do
     login_as :manager
-    patch :update, id: @service, service: { description: @service.description, name: @service.name, picture_url: @service.picture_url, title: @service.title }
+    patch :update, id: @service,
+        service: {
+          description: @service.description,
+          name:        @service.name,
+          picture_url: @service.picture_url,
+          title:       @service.title,
+          seo_meta:    @seo_meta
+        }
     assert_redirected_to service_path(assigns(:service))
   end
 
