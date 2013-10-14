@@ -7,6 +7,7 @@ class TypeOfProductsController < ApplicationController
     @type_of_products = TypeOfProduct.all
     expires_in 5.minutes, public: true
     fresh_when @type_of_products, public: true
+    @service = Service.find(params[:service_id])
     @meta_keywords = 'Трубы Трубень Трубенище Отрубеть'
     @meta_description = 'Три тыщи труб тебе в зад!'
   end

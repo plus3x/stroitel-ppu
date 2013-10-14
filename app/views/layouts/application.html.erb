@@ -15,19 +15,20 @@
     <% image_tag("logo.png") %>
     <%= @page_title || t('.title') %>
     <div id="login">
-      <% if session[:user_id] %>
+      <% if current_user %>
         You may <%= link_to t('sign_out'), logout_url, method: :delete %> here.<br/>
-        <%= "Hello #{User.find(session[:user_id]).name}" %>
+        <%= "Hello #{current_user.name}" %>
       <% end %>
     </div>
   </div>
   <div id="columns">
     <div id="side"> 
       <ul>
-        <li><%= link_to_unless_current t('.main_page'),  main_path %></li>
-        <li><%= link_to_unless_current t('.contacts_page'),  contacts_path %></li>
-        <li><%= link_to_unless_current t('.about_page'),  about_path %></li>
-        <li><%= link_to_unless_current t('.new_order'),  new_order_path %></li>
+        <li><%= link_to_unless_current t('.main_page'),              main_path %></li>
+        <li><%= link_to_unless_current t('.contacts_page'),      contacts_path %></li>
+        <li><%= link_to_unless_current t('.production_page'),  production_path %></li>
+        <li><%= link_to_unless_current t('.about_page'),            about_path %></li>
+        <li><%= link_to_unless_current t('.new_order'),         new_order_path %></li>
         <% if current_user %>
           <% if current_user.admin? %>
             <li><%= link_to_unless_current t('.users_page'),  users_path %></li>
