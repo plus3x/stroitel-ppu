@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Stroitel PPU</title>
+  <title><%= @head_title || t('.title') %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -13,7 +13,7 @@
 <body id="<%= controller.controller_name %>">
   <div id="banner">
     <% image_tag("logo.png") %>
-    <%= @page_title || t('.title') %>
+    <%= t('.title') %>
     <div id="login">
       <% if current_user %>
         You may <%= link_to t('sign_out'), logout_url, method: :delete %> here.<br/>
