@@ -5,20 +5,20 @@ class ProductsController < ApplicationController
   # GET /services/:service_id/type_of_products/:type_of_product_id/products
   def index
     @products = Product.all
-    @head_title = 'ПСФ Строитель / Вся родукция'
-    @meta_keywords = 'All products Трубы Трубень Трубенище Отрубеть'
-    @meta_description = 'Три тыщи труб тебе в зад!'
     fresh_when @products, public: true
+    @head_title       = I18n.t('.products.index.head_title')
+    @meta_keywords    = I18n.t('.products.index.meta_keywords')
+    @meta_description = I18n.t('.products.index.meta_description')
     @service = Service.find(params[:service_id])
     @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/1
   def show
-    @head_title = "ПСФ Строитель / Продукция / #{@product.name}"
-    @meta_keywords    = @product.seo_meta.keywords
-    @meta_description = @product.seo_meta.description
     fresh_when [@product, current_user], public: true
+    @head_title       = I18n.t('.products.show.head_title',             title: @product.name)
+    @meta_keywords    = I18n.t('.products.show.meta_keywords',       keywords: @product.seo_meta.keywords)
+    @meta_description = I18n.t('.products.show.meta_description', description: @product.seo_meta.description)
     @service = Service.find(params[:service_id])
     @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end

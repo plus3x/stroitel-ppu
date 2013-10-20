@@ -20,10 +20,79 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ru:
-  hello: "Hello world"
+  name: Имя
+  description: Описание
+  email: Элекропочта
+  phone: Телефон
+  message: Сообщение
+  show: Показать
+  edit: Отредактировать
+  destroy: Удалить
+  back: Назад
   layouts:
     application:
-      title: Строитель ППУ
+      main_page: Главная
+      contacts_page: Контакты
+      production_page: Производство
+      about_page: О компании
+      new_order: Оставить заявку
+      users_page: Пользователи
+      orders: Заказы
+      default_head_title: ПСФ Строитель
+      default_meta_keywords: 'Трубы, изделия, полиуретан, разного диаметра, укладка труб'
+      default_meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+  main:
+    index:
+      head_title: ПСФ Строитель / Главная
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: 'ПСФ Строитель - изготовим трубу на любой вкус'
+  contacts:
+    index:
+      head_title: ПСФ Строитель / Контакты
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+  production:
+    index:
+      head_title: ПСФ Строитель / Производство
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+  about:
+    index:
+      head_title: ПСФ Строитель / О компании
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+  orders:
+    new:
+      head_title: ПСФ Строитель / Оставить заявку
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+  services:
+    index:
+      head_title: ПСФ Строитель / Сервисы
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+    show:
+      head_title: 'ПСФ Строитель / Сервисы / %{title}'
+      meta_keywords: '%{keywords}'
+      meta_description: '%{description}'
+  type_of_products:
+    index:
+      head_title: ПСФ Строитель / Типы продукции
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+    show:
+      head_title: 'ПСФ Строитель / Типы продукции / %{title}'
+      meta_keywords: '%{keywords}'
+      meta_description: '%{description}'
+  products:
+    index:
+      head_title: ПСФ Строитель / Продукция
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+    show:
+      head_title: 'ПСФ Строитель / Продукция / %{title}'
+      meta_keywords: '%{keywords}'
+      meta_description: '%{description}'
       
   # Mail #
   user_notifier:
