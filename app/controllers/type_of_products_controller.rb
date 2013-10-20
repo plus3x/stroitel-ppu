@@ -8,7 +8,6 @@ class TypeOfProductsController < ApplicationController
     @head_title = 'ПСФ Строитель / Все типы продукции'
     @meta_keywords = 'All type of product Трубы Трубень Трубенище Отрубеть'
     @meta_description = 'Три тыщи труб тебе в зад!'
-    expires_in 5.minutes, public: true
     fresh_when @type_of_products, public: true
     @service = Service.find(params[:service_id])
   end
@@ -19,7 +18,6 @@ class TypeOfProductsController < ApplicationController
     @head_title = "ПСФ Строитель / Типы продукции / #{@type_of_product.name}"
     @meta_keywords    = @type_of_product.seo_meta.keywords
     @meta_description = @type_of_product.seo_meta.description
-    expires_in 5.minutes, public: true
     fresh_when [@products, current_user], public: true
     @service = Service.find(params[:service_id])
   end

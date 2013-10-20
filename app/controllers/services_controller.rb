@@ -8,7 +8,6 @@ class ServicesController < ApplicationController
     @head_title = 'ПСФ Строитель / Все сервисы'
     @meta_keywords = 'All services Трубы Трубень Трубенище Отрубеть'
     @meta_description = 'Три тыщи труб тебе в зад!'
-    expires_in 5.minutes, public: true
     fresh_when @services, public: true
   end
 
@@ -18,8 +17,7 @@ class ServicesController < ApplicationController
     @meta_keywords    = @service.seo_meta.keywords
     @meta_description = @service.seo_meta.description
     @type_of_products = @service.type_of_products
-    expires_in 5.minutes, public: true
-    fresh_when [@type_of_products, current_user], public: true
+    fresh_when [@service, @type_of_products, current_user], public: true
   end
 
   # GET /services/new

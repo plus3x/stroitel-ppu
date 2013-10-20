@@ -5,6 +5,5 @@ class MainController < ApplicationController
     @meta_keywords = 'Main Трубы Трубень Трубенище Отрубеть'
     @meta_description = 'Три тыщи труб тебе в зад!'
     fresh_when [@services, current_user], public: true
-    expires_in 5.minutes, public: true
   end
 end

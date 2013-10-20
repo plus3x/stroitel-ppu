@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authorize
+  skip_before_action :set_public_proxy_refresh
 
   # GET /users
   def index
