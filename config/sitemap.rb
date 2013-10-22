@@ -2,29 +2,29 @@
 SitemapGenerator::Sitemap.default_host = "http://www.stroitel-ppu.ru"
 
 SitemapGenerator::Sitemap.public_path   = 'tmp/'
-SitemapGenerator::Sitemap.sitemaps_path = 'public/'
+SitemapGenerator::Sitemap.sitemaps_path = ''
 SitemapGenerator::Sitemap.create_index  = true
 SitemapGenerator::Sitemap.namer         = SitemapGenerator::SimpleNamer.new(:sitemap, zero: '_index')
-# SitemapGenerator::Sitemap.adapter = SitemapGenerator::FileAdapter.new
+SitemapGenerator::Sitemap.adapter       = SitemapGenerator::WaveAdapter.new
 SitemapGenerator::Sitemap.ping_search_engines(yandex: 'http://webmaster.yandex.ru/sitemaptest.xml?host=www.stroitel-ppu.ru')
 
 SitemapGenerator::Sitemap.create do
-  add main_path,        lastmod: File.mtime('app/views/main/index.html.erb')
-  add contacts_path,    lastmod: File.mtime('app/views/contacts/index.html.erb')
+  add main_path,       lastmod: File.mtime('app/views/main/index.html.erb')
+  add contacts_path,   lastmod: File.mtime('app/views/contacts/index.html.erb')
   add production_path, lastmod: File.mtime('app/views/production/index.html.erb')
   
-          services_index_updated_at = [File.mtime('app/views/services/index.html.erb'),               Service.maximum(:updated_at)].max
-  type_of_products_index_updated_at = [File.mtime('app/views/type_of_products/index.html.erb'), TypeOfProduct.maximum(:updated_at)].max
-          products_index_updated_at = [File.mtime('app/views/products/index.html.erb'),               Product.maximum(:updated_at)].max
+          services_updated_at = [File.mtime('app/views/services/index.html.erb'),               Service.maximum(:updated_at)].max
+  type_of_products_updated_at = [File.mtime('app/views/type_of_products/index.html.erb'), TypeOfProduct.maximum(:updated_at)].max
+          products_updated_at = [File.mtime('app/views/products/index.html.erb'),               Product.maximum(:updated_at)].max
   
-  add services_path, lastmod: services_index_updated_at, changefreq: :daily,  priority: 0.7
+  add services_path, lastmod: services_updated_at, changefreq: :daily,  priority: 0.7
   
   Service.all.each do |service| 
     add "/services/#{service.id}", lastmod: service.updated_at
-    add service_type_of_products_path(service), lastmod: type_of_products_index_updated_at, changefreq: :daily,  priority: 0.7
+    add service_type_of_products_path(service), lastmod: type_of_products_updated_at, changefreq: :daily,  priority: 0.7
     service.type_of_products.each do |type_of_product|
       add "/services/#{service.id}/type_of_products/#{type_of_product.id}", lastmod: type_of_product.updated_at
-      add service_type_of_product_products_path(service, type_of_product), lastmod: products_index_updated_at, changefreq: :daily,  priority: 0.7
+      add service_type_of_product_products_path(service, type_of_product), lastmod: products_updated_at, changefreq: :daily,  priority: 0.7
       type_of_product.products.each do |product|
         add "/services/#{service.id}/type_of_products/#{type_of_product.id}/products/#{product.id}", lastmod: product.updated_at
       end
