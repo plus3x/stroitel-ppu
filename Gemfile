@@ -1,10 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-# For SEO
-gem 'sitemap_generator'
-gem 'carrierwave'
-
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -57,7 +53,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-group :development do
-  gem 'heroku'
-  gem 'pry-rails'
-end
+gem 'pry-rails', group: [:development, :test]

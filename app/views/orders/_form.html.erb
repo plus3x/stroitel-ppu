@@ -11,16 +11,6 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :seo_meta do |seo_form| %>
-    <div class="field">
-      <%= seo_form.label 'SEO keywords: ' %>
-      <%= seo_form.text_field :keywords %>
-    </div>
-    <div class="field">
-      <%= seo_form.label 'SEO description: ' %>
-      <%= seo_form.text_field :description %>
-    </div>
-  <% end %>
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>

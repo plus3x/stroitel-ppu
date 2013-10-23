@@ -1,9 +1,10 @@
 class MainController < ApplicationController
   def index
     @services = Service.all
+    @head_title = 'ПСФ Строитель / Главная'
+    @meta_keywords = 'Main Трубы Трубень Трубенище Отрубеть'
+    @meta_description = 'Три тыщи труб тебе в зад!'
     fresh_when [@services, current_user], public: true
-    @head_title       = I18n.t('.main.index.head_title')
-    @meta_keywords    = I18n.t('.main.index.meta_keywords')
-    @meta_description = I18n.t('.main.index.meta_description')
+    expires_in 5.minutes, public: true
   end
 end
