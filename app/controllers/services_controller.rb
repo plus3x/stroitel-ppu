@@ -5,21 +5,20 @@ class ServicesController < ApplicationController
   # GET /services
   def index
     @services = Service.all
-    @head_title = 'ПСФ Строитель / Все сервисы'
-    @meta_keywords = 'All services Трубы Трубень Трубенище Отрубеть'
-    @meta_description = 'Три тыщи труб тебе в зад!'
-    expires_in 5.minutes, public: true
     fresh_when @services, public: true
+    @head_title       = I18n.t('.services.index.head_title')
+    @meta_keywords    = I18n.t('.services.index.meta_keywords')
+    @meta_description = I18n.t('.services.index.meta_description')
   end
 
   # GET /services/1
   def show
-    @head_title = "ПСФ Строитель / Сервисы / #{@service.name}"
-    @meta_keywords    = @service.seo_meta.keywords
-    @meta_description = @service.seo_meta.description
     @type_of_products = @service.type_of_products
-    expires_in 5.minutes, public: true
-    fresh_when [@type_of_products, current_user], public: true
+    fresh_when [@service, @type_of_products, current_user], public: true
+    @head_title = "ПСФ Строитель / Сервисы / #{@service.name}"
+    @head_title       = I18n.t('.services.show.head_title',             title: @service.name)
+    @meta_keywords    = I18n.t('.services.show.meta_keywords',       keywords: @service.seo_meta.keywords)
+    @meta_description = I18n.t('.services.show.meta_description', description: @service.seo_meta.description)
   end
 
   # GET /services/new
