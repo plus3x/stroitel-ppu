@@ -24,6 +24,11 @@ ru:
   layouts:
     application:
       title: Строитель ППУ
+      main_page: Главная
+      contacts_page: Контакты
+      production_page: Продукция
+      about_page: О нас
+      new_order: Новый заказ
       
   # Mail #
   user_notifier:

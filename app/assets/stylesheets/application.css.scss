@@ -13,10 +13,10 @@
  */
 
 body {
-  margin: 0px;
+  background: image_url('bg-texture.png');
+  margin: 0 10%;
   
   #banner {
-    background: #f55;
     padding: 25px 0px 0px 25px;
     margin: 0px;
     font: small-caps 42px/42px "Times New Roman", serif;
@@ -44,34 +44,57 @@ body {
 
   #columns {
     #side {
+      height: 65px;
       padding: 0;
       width: 100%;
-      background: #000;
+      background: image_url('top-menu-grad.png') repeat-x;
+      &:before { 
+        content: " "; 
+        background: image_url('top-menu-leftground.png') no-repeat;
+        width: 14px;
+        height: 65px;
+        left: 9.3%;
+        position: absolute;
+      }
+      &:after {
+        content: " "; 
+        background: image_url('top-menu-rightground.png') no-repeat;
+        width: 14px;
+        height: 65px;
+        left: 90%;
+        position: absolute;
+      }
       ul {
-        padding: 1px 25px;
-        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-transform: uppercase;
         li {
-          align: center;
-          display: inline;
-          list-style: none;
-          color: #000;
-          background: #ffe;
-          font: small-caps 22px/22px "Times New Roman", serif;
+          color: grey;
+          position: relative;
+          float: left;
+          height: 65px;
+          line-height: 65px;
+          width: 165px;
+          text-align: center;
+          background: image_url('top-menu-separator.png') right no-repeat;
+          &:hover { background: image_url('top-menu-hover.png'); }
           a {
-            color: #fff;
-            padding: 0px 25px;
-            background: #000;
+            display: block;
+            padding: 0 20px;
+            height: 65px;
+            color: white;
             text-decoration: none;
-            &:hover { color: #000; background: #f55; }
+            height: 65px;
           }
         }
       }
     }
   
     #main {
-      margin: 0px 10%;
       padding: 1em;
       background: #ffe;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
     }
   }
   #footer {
