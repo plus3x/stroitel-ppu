@@ -5,7 +5,7 @@ class ServicesController < ApplicationController
   # GET /services
   def index
     @services = Service.all
-    fresh_when @services, public: true
+    fresh_when [@services, current_user], public: true
     @head_title       = I18n.t('.services.index.head_title')
     @meta_keywords    = I18n.t('.services.index.meta_keywords')
     @meta_description = I18n.t('.services.index.meta_description')

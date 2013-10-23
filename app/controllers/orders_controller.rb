@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authorize, except: [:new, :create]
   after_action :send_invoice, only: [:create]
+  skip_before_action :set_public_proxy_refresh
 
   # GET /orders
   def index

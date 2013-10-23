@@ -5,7 +5,7 @@ class TypeOfProductsController < ApplicationController
   # GET /services/:service_id/type_of_products
   def index
     @type_of_products = TypeOfProduct.all
-    fresh_when @type_of_products, public: true
+    fresh_when [@type_of_products, current_user], public: true
     @head_title       = I18n.t('.type_of_products.index.head_title')
     @meta_keywords    = I18n.t('.type_of_products.index.meta_keywords')
     @meta_description = I18n.t('.type_of_products.index.meta_description')
