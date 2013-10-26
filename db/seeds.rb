@@ -19,8 +19,8 @@ end
 
 User.destroy_all
 users = User.create([
-  { id: 1, role_id: 1, name: 'admin',   password: 'admin',   password_confirmation: 'admin'   },
-  { id: 2, role_id: 2, name: 'manager', password: 'manager', password_confirmation: 'manager' }
+  { id: 1, role_id: 1, name: 'admin',   password: 'PasswordAdmina',   password_confirmation: 'PasswordAdmina'   },
+  { id: 2, role_id: 2, name: 'manager', password: 'PasswordManagera', password_confirmation: 'PasswordManagera' }
 ])
 if users[0].save and users[1].save
   puts "Default users: " + users.map(&:name).join(', ')
@@ -30,9 +30,9 @@ end
 
 Service.destroy_all
 services = Service.create([
-  { id: 1, name: 'New service', title: 'Service title', description: 'Service description', picture_url: nil },
-  { id: 2, name: 'New service', title: 'Service title', description: 'Service description', picture_url: nil },
-  { id: 3, name: 'New service', title: 'Service title', description: 'Service description', picture_url: nil }
+  { id: 1, name: 'New service', title: 'Service title', picture_url: nil, description: open('db/descriptions/services/1.html').read },
+  { id: 2, name: 'New service', title: 'Service title', picture_url: nil, description: open('db/descriptions/services/2.html').read },
+  { id: 3, name: 'New service', title: 'Service title', picture_url: nil, description: open('db/descriptions/services/3.html').read }
 ])
 if services[0].save and services[1].save and services[2].save
   puts "Default services: " + services.map(&:name).join(', ')
@@ -42,9 +42,9 @@ end
 
 TypeOfProduct.destroy_all
 type_of_products = TypeOfProduct.create([
-  { id: 1, name: 'New type of product', title: 'Type of product title', description: 'Type of product description', picture_url: nil, service_id: 1 },
-  { id: 2, name: 'New type of product', title: 'Type of product title', description: 'Type of product description', picture_url: nil, service_id: 2 },
-  { id: 3, name: 'New type of product', title: 'Type of product title', description: 'Type of product description', picture_url: nil, service_id: 3 }
+  { id: 1, name: 'New type of product', title: 'Type of product title', picture_url: nil, service_id: 1, description: open('db/descriptions/type_of_products/1.html').read },
+  { id: 2, name: 'New type of product', title: 'Type of product title', picture_url: nil, service_id: 2, description: open('db/descriptions/type_of_products/2.html').read },
+  { id: 3, name: 'New type of product', title: 'Type of product title', picture_url: nil, service_id: 3, description: open('db/descriptions/type_of_products/3.html').read }
 ])
 if type_of_products[0].save and type_of_products[1].save and type_of_products[2].save
   puts "Default type of products: " + type_of_products.map(&:name).join(', ')
@@ -54,9 +54,9 @@ end
 
 Product.destroy_all
 products = Product.create([
-  { id: 1, name: 'New product', title: 'Product title', description: 'Product description', picture_url: nil, type_of_product_id: 1 },
-  { id: 2, name: 'New product', title: 'Product title', description: 'Product description', picture_url: nil, type_of_product_id: 2 },
-  { id: 3, name: 'New product', title: 'Product title', description: 'Product description', picture_url: nil, type_of_product_id: 3 }
+  { id: 1, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/1.html').read },
+  { id: 2, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/1.html').read },
+  { id: 3, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 3, description: open('db/descriptions/products/1.html').read }
 ])
 if products[0].save and products[1].save and products[2].save
   puts "Default products: " + products.map(&:name).join(', ')
