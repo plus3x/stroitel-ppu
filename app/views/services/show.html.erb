@@ -1,29 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class='path'>
-  <%= link_to 'Main', main_path %> /
+  <%= link_to 'Main', main_path %>
   <%= link_to @service.name, '' %>
 </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @service.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @service.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
   <%=raw @service.description %>
-</p>
-
-<p>
-  <strong>Picture url:</strong>
-  <%= @service.picture_url %>
-</p>
 
 <ul id='type_of_products'>
   <% cache @type_of_products do %>

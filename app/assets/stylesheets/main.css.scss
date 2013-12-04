@@ -3,9 +3,61 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body#main {
-  #services {
-    width: 200px;
-    list-style: none;
-    border: 1px solid black; 
+  #home {
+    float: left;
+    width: 45%;
+    h1 {
+      color: #592556;
+      font-weight: bold;
+      font-family: 'XeniaExtendedCNormal';
+    }
   }
 }
+
+.path {
+  float: left;
+  display: inline-block;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  a{
+    display: block;
+    float: left;
+    line-height: 50px;
+    height: 100%;
+    padding: 0px 10px;
+    background: image_url('pipes.png');
+  }
+   
+  &:after {
+    content: '';
+    display: block;
+    float: left;
+    height: 50px;
+    width: 95px;
+    left: 0;
+    background: image_url('pipe.png');
+  }
+}
+
+.table-ppu {
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+    font-size: 12px; 
+    color: #000000; 
+    text-align: center; 
+    border-width: 1px; 
+    border-color: #bbbbbb; 
+    border-style: solid;
+}
+.table-line-ppu{
+    line-height: 15px;
+}
+.table-color-line-ppu{
+    background-color: #e2f1ed; 
+    border-width: 1px;
+}
+.table-ppu th { background: rgb(185, 75, 66); color: #fff; text-align: center; font-size: 13px; }
+.table-ppu td { font-size: 13px; text-align: center; }
+.table-ppu th.line { padding: 2px 0 0 0; }
+.odd, .odd td { background: #D6DAE0; }
+.even, .even td { background: none; }

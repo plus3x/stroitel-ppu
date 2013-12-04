@@ -12,22 +12,21 @@
   <%= tag 'meta', name: 'Description', content: (@meta_description || t('.default_meta_description')) %>
 </head>
 <body id="<%= controller.controller_name %>">
-  <div id="banner">
-    <% image_tag("logo.png") %>
-    <%= t('.title') %>
+  <div id="top">
+    <%= image_tag("glass_logo.png") %>
     <div id="login">
       <% if current_user %>
         You may <%= link_to t('sign_out'), logout_url, method: :delete %> here.<br/>
         <%= "Hello #{current_user.name}" %>
       <% end %>
     </div>
-  </div>
-  <div id="columns">
     <div id="side"> 
-      <ul>
+      <ul class='left'>
         <li><%= link_to_unless_current t('.main_page'),              main_path %></li>
         <li><%= link_to_unless_current t('.contacts_page'),      contacts_path %></li>
         <li><%= link_to_unless_current t('.production_page'),  production_path %></li>
+      </ul>
+      <ul class='right'>  
         <li><%= link_to_unless_current t('.about_page'),            about_path %></li>
         <li><%= link_to_unless_current t('.new_order'),         new_order_path %></li>
         <% if current_user %>
@@ -40,13 +39,35 @@
         <% end %>
       </ul>
     </div>
-    <div id="main"> 
-    
+  </div>
+  <div id="content">
+    <div id='banner'>
+      <%= image_tag("headbox.png") %>
+    </div>
+    <div class='clear'></div>
+    <div id="main">
+      <ul id='services'>
+        <h2>Деятельность компании</h2>
+        <% cache @products do %>
+          <%= render @services %>
+        <% end %>
+      </ul>
       <%= yield %>
     
+      <div id="bottom_banner">
+        <%= image_tag("bottom-banner.png") %>
+      </div>
     </div>
-    <div id="footer">
-      <%= t '.сopyright' %>
+  </div>
+  <div id="footer">
+    <div id="logo-small">
+      <%= image_tag("logo-small.png") %>
+    </div>
+    <div id="address">
+        195220, г. Санкт-Петербург, пр. Науки, дом 19, корпус 2, подъезд 11, 4 этаж
+    </div>
+    <div id="contacts">
+       Телефоны/Факс: 8 (812) 536-22-15, 8 (812) 536-22-17 <br> email <%= mail_to 'stroitel-ppu@yandex.ru' %>
     </div>
   </div>
 </body>

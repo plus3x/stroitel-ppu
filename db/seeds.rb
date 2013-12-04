@@ -30,7 +30,7 @@ end
 
 Service.destroy_all
 services = Service.create([
-  { id: 1, name: 'New service', title: 'Service title', picture_url: nil, description: open('db/descriptions/services/1.html').read },
+  { id: 1, name: 'Трубы ППУ', title: 'Трубы ППУ от производителя', picture_url: nil, description: open('db/descriptions/services/1.html').read },
   { id: 2, name: 'New service', title: 'Service title', picture_url: nil, description: open('db/descriptions/services/2.html').read },
   { id: 3, name: 'New service', title: 'Service title', picture_url: nil, description: open('db/descriptions/services/3.html').read }
 ])

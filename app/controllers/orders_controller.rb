@@ -15,6 +15,8 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @services = Service.all
+    fresh_when [@services, current_user], public: true
     @order = Order.new
   end
 

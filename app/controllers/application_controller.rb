@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
     end
     
     def set_public_proxy_refresh
+      @services = Service.all
+      fresh_when [@services, current_user], public: true
       expires_now if stale? current_user.to_s
       expires_in 10.minutes, public: true
     end

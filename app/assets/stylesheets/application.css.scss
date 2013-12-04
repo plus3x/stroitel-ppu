@@ -10,17 +10,25 @@
 //= require_self
 //= require_tree .
 
+
+
 body {
   background: image_url('bg-texture.png');
-  margin: 0px 10%;
+  margin: 0;
   
-  #banner {
-    padding: 25px 0px 0px 25px;
-    margin: 0px;
-    font: small-caps 42px/42px "Times New Roman", serif;
-    color: white;
-    text-align: left-bottom;
-    img { float: left; }
+  .clear {
+    clear: both;
+  }
+  
+  #top {
+    background: image_url('top-menu-grad.png') repeat-x;
+    height: 65px;
+    img { 
+      position: absolute;
+      left: 44%;
+      width: 11%;
+      padding-top: 3px;
+     }
     #language {
       float: right;
       margin-right: 10px;
@@ -38,47 +46,28 @@ body {
       text-align: top-right;
       a { text-decoration: none; }
     }
-  }
-
-  #columns {
     #side {
       height: 65px;
       padding: 0px;
-      width: 100%;
-      background: image_url('top-menu-grad.png') repeat-x;
-      &:before { 
-        content: " "; 
-        background: image_url('top-menu-leftground.png') no-repeat;
-        width: 14px;
-        height: 65px;
-        left: 9.3%;
-        position: absolute;
-      }
-      &:after {
-        content: " "; 
-        background: image_url('top-menu-rightground.png') no-repeat;
-        width: 14px;
-        height: 65px;
-        left: 90%;
-        position: absolute;
-      }
       ul {
+        margin: 0;
         padding: 0;
         list-style: none;
         text-transform: uppercase;
+        background: image_url('top-menu-separator.png') left no-repeat;
         li {
           color: grey;
           position: relative;
           float: left;
           height: 65px;
           line-height: 65px;
-          width: 165px;
+          width: auto;
+          padding: 0px 20px;
           text-align: center;
           background: image_url('top-menu-separator.png') right no-repeat;
           &:hover { background: image_url('top-menu-hover.png'); }
           a {
             display: block;
-            padding: 0 20px;
             height: 65px;
             color: white;
             text-decoration: none;
@@ -86,20 +75,95 @@ body {
           }
         }
       }
+      .left {
+        float: right;
+        position: absolute;
+        right: 57%;
+      }
+      .right {
+        float: left;
+        position: absolute;
+        left: 57%;
+      }
     }
+  }
+
+  #content {
+    margin: 0% 10%;
+    #services {
+      margin: 15px 20px;
+      display: block;
+      float: left;
+      width: 250px;
+      list-style: none;
+      border: 1px solid gray;
+      border-radius: 5px;
+      padding-left: 0;
+      background-color: #F8F8FF;
+      h2 {
+        text-align: center;
+        font-family: 'XeniaExtendedCNormal';
+        line-height: 18px;
+        font-weight: normal;
+        color: #592556;
+        font-size: 2em;
+        font-weight: bold;
+      }
+      li {
+        padding: 7px 10px 7px 20px;
+        a {
+          display: block;
+          width: 100%;
+          font-size: 13px;
+          line-height: 20px;
+          color: #592556;
+          &:hover { color: white;}
+        }
+        &:hover { background-color: #592556; }
+      }
+    }
+    #banner {
+      img {
+        display: block;
+        float: left;
+        width: 100%;
+      }
+    }
+    &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 10px;
+      background: image_url('bottomwrapground.png') no-repeat;
+      background-size: 100%;
+    }
+  }  
   
-    #main {
-      padding: 1em;
-      background: #ffe;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-    }
+  #main {
+    padding: 1em;
+    background: image_url('wrapground.png') repeat-y;
+    background-size: 100%;
+    #bottom_banner { text-align: center; }
   }
   #footer {
     font: small-caps 16px/16px "Times New Roman", serif;
-    color: #aaa;
+    color: white;
     text-align: center;
-    width: 100%;
-    height: 30px;
+    margin: 0% 10%;
+    #logo-small{
+      float: left;
+      padding-left: 20px;
+      width: 120px;
+    }
+    #address{
+      float: left;
+      padding: 20px;
+      width: 200px;
+    }
+    #contacts{
+      float: left;
+      padding: 20px;
+      width: 360px;
+    }
   }
 }
