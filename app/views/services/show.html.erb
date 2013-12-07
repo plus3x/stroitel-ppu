@@ -7,11 +7,6 @@
 
   <%=raw @service.description %>
 
-<ul id='type_of_products'>
-  <% cache @type_of_products do %>
-    <%= render @type_of_products  %>
-  <% end %>
-</ul>
 
 <% if current_user %>
   <% if current_user.manager? or current_user.admin? %>

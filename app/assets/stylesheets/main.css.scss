@@ -5,12 +5,21 @@
 body#main {
   #home {
     float: left;
+    padding-left: 15px;
     width: 45%;
     h1 {
       color: #592556;
       font-weight: bold;
       font-family: 'XeniaExtendedCNormal';
     }
+  }
+}
+
+#long-content {
+  margin-left: 290px;
+  width: 800px;
+  h1 {
+    padding: 30px 10px 15px 10px;
   }
 }
 
@@ -34,9 +43,9 @@ body#main {
     display: block;
     float: left;
     height: 50px;
-    width: 95px;
+    width: 600px;
     left: 0;
-    background: image_url('pipe.png');
+    background: image_url('pipe.png') no-repeat;
   }
 }
 
