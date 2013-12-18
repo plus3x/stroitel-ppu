@@ -30,8 +30,8 @@ end
 
 Service.destroy_all
 services = Service.create([
-  { id: 1, name: 'Трубы ППУ', title: 'Трубы ППУ от производителя', picture_url: nil, description: open('db/descriptions/services/1.html').read },
-  { id: 2, name: 'New service', title: 'Service title', picture_url: nil, description: open('db/descriptions/services/2.html').read },
+  { id: 1, name: 'Трубы ППУ', title: 'Трубы ППУ от производителя', picture_url: nil, description: open('db/descriptions/services/pipes.html').read },
+  { id: 2, name: 'Фасонные изделия', title: 'Фасонные изделия', picture_url: nil, description: open('db/descriptions/services/formed-parts.html').read },
   { id: 3, name: 'New service', title: 'Service title', picture_url: nil, description: open('db/descriptions/services/3.html').read }
 ])
 if services[0].save and services[1].save and services[2].save
@@ -42,7 +42,7 @@ end
 
 TypeOfProduct.destroy_all
 type_of_products = TypeOfProduct.create([
-  { id: 1, name: 'New type of product', title: 'Type of product title', picture_url: nil, service_id: 1, description: open('db/descriptions/type_of_products/1.html').read },
+  { id: 1, name: 'Отводы в ППУ изоляции', title: 'Отводы в ППУ изоляции | ПСФ Строитель', picture_url: nil, service_id: 2, description: open('db/descriptions/type_of_products/taps_in_foam_insulation.html').read },
   { id: 2, name: 'New type of product', title: 'Type of product title', picture_url: nil, service_id: 2, description: open('db/descriptions/type_of_products/2.html').read },
   { id: 3, name: 'New type of product', title: 'Type of product title', picture_url: nil, service_id: 3, description: open('db/descriptions/type_of_products/3.html').read }
 ])
@@ -54,9 +54,11 @@ end
 
 Product.destroy_all
 products = Product.create([
-  { id: 1, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/1.html').read },
-  { id: 2, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/1.html').read },
-  { id: 3, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 3, description: open('db/descriptions/products/1.html').read }
+  { id: 1, name: 'Отводы в ППУ изоляции в оболочке из полиэтилена', title: 'Отводы в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_pe.html').read },
+  { id: 2, name: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали', title: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_oc.html').read },
+  { id: 3, name: 'Двойные отводы', title: 'Двойные отводы | ПСФ Строитель', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_double.html').read }
+	{ id: 4, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 3, description: open('db/descriptions/products/1.html').read }
+	{ id: 5, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 3, description: open('db/descriptions/products/1.html').read }
 ])
 if products[0].save and products[1].save and products[2].save
   puts "Default products: " + products.map(&:name).join(', ')
