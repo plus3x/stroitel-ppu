@@ -30,9 +30,9 @@ end
 
 Service.destroy_all
 services = Service.create([
-  { id: 1, name: 'Трубы ППУ', title: 'Трубы ППУ от производителя', picture_url: nil, description: open('db/descriptions/services/pipes.html').read },
-  { id: 2, name: 'Фасонные изделия', title: 'Фасонные изделия', picture_url: nil, description: open('db/descriptions/services/formed-parts.html').read },
-  { id: 3, name: 'New service', title: 'Service title', picture_url: nil, description: open('db/descriptions/services/3.html').read }
+  { id: 1, name: 'Трубы ППУ',        title: 'Трубы ППУ от производителя', picture_url: nil, description: open('db/descriptions/services/pipes.html').read },
+  { id: 2, name: 'Фасонные изделия', title: 'Фасонные изделия',           picture_url: nil, description: open('db/descriptions/services/formed-parts.html').read },
+  { id: 3, name: 'New service',      title: 'Service title',              picture_url: nil, description: open('db/descriptions/services/3.html').read }
 ])
 if services[0].save and services[1].save and services[2].save
   puts "Default services: " + services.map(&:name).join(', ')
@@ -53,20 +53,19 @@ else
 end
 
 Product.destroy_all
-products = Product.create([
-  { id: 1, name: 'Отводы в ППУ изоляции в оболочке из полиэтилена', title: 'Отводы в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_pe.html').read },
-  { id: 2, name: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали', title: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_oc.html').read },
-  { id: 3, name: 'Двойные отводы', title: 'Двойные отводы | ПСФ Строитель', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_double.html').read },
-	{ id: 4, name: 'Тройники в ППУ изоляции в оболочке из полиэтилена', title: 'Тройники в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_pe.html').read },
+products = [
+  { id: 1, name: 'Отводы в ППУ изоляции в оболочке из полиэтилена',          title: 'Отводы в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель',          picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_pe.html').read },
+  { id: 2, name: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали',   title: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель',   picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_oc.html').read },
+  { id: 3, name: 'Двойные отводы',                                           title: 'Двойные отводы | ПСФ Строитель',                                           picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_double.html').read },
+	{ id: 4, name: 'Тройники в ППУ изоляции в оболочке из полиэтилена',        title: 'Тройники в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель',        picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_pe.html').read },
 	{ id: 5, name: 'Тройники в ППУ изоляции в оболочке из оцинкованной стали', title: 'Тройники в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_oc.html').read },
-	{ id: 6, name: 'Двойные тройники', title: 'Двойные тройники | ПСФ Строитель', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_double.html').read },
-	{ id: 7, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 3, description: open('db/descriptions/products/1.html').read }
-])
-
+	{ id: 6, name: 'Двойные тройники',                                         title: 'Двойные тройники | ПСФ Строитель',                                         picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_double.html').read },
+	{ id: 7, name: 'New product',                                              title: 'Product title',                                                            picture_url: nil, type_of_product_id: 3, description: open('db/descriptions/products/1.html').read }
+]
 print "Default products: "
-Product.create(products).each do |products|
-  if products.save
-    print "#{products.id}, "
+Product.create(products).each do |product|
+  if product.save
+    print "#{product.id}, "
   else
     puts '>>> Product list not created!'
   end
