@@ -56,19 +56,22 @@ Product.destroy_all
 products = Product.create([
   { id: 1, name: 'Отводы в ППУ изоляции в оболочке из полиэтилена', title: 'Отводы в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_pe.html').read },
   { id: 2, name: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали', title: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_oc.html').read },
-  { id: 3, name: 'Двойные отводы', title: 'Двойные отводы | ПСФ Строитель', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_double.html').read }
-	{ id: 4, name: 'Тройники в ППУ изоляции в оболочке из полиэтилена', title: 'Тройники в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_pe.html').read }
-	{ id: 5, name: 'Тройники в ППУ изоляции в оболочке из оцинкованной стали', title: 'Тройники в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_oc.html').read }
-	{ id: 6, name: 'Двойные тройники', title: 'Двойные тройники | ПСФ Строитель', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_double.html').read }
+  { id: 3, name: 'Двойные отводы', title: 'Двойные отводы | ПСФ Строитель', picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_double.html').read },
+	{ id: 4, name: 'Тройники в ППУ изоляции в оболочке из полиэтилена', title: 'Тройники в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_pe.html').read },
+	{ id: 5, name: 'Тройники в ППУ изоляции в оболочке из оцинкованной стали', title: 'Тройники в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_oc.html').read },
+	{ id: 6, name: 'Двойные тройники', title: 'Двойные тройники | ПСФ Строитель', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_double.html').read },
 	{ id: 7, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 3, description: open('db/descriptions/products/1.html').read }
-	{ id: 8, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 3, description: open('db/descriptions/products/1.html').read }
-	{ id: 9, name: 'New product', title: 'Product title', picture_url: nil, type_of_product_id: 3, description: open('db/descriptions/products/1.html').read }
 ])
-if products[0].save and products[1].save and products[2].save
-  puts "Default products: " + products.map(&:name).join(', ')
-else
-  puts '>>> Product list not created!'
+
+print "Default products: "
+Product.create(products).each do |products|
+  if products.save
+    print "#{products.id}, "
+  else
+    puts '>>> Product list not created!'
+  end
 end
+print "\n"
 
 SeoMeta.destroy_all
 seometa = [
