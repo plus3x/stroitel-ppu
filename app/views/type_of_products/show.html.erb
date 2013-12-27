@@ -6,25 +6,7 @@
   <%= link_to @type_of_product.name, '' %>
 </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @type_of_product.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @type_of_product.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%=raw @type_of_product.description %>
-</p>
-
-<p>
-  <strong>Picture url:</strong>
-  <%= @type_of_product.picture_url %>
-</p>
+<%=raw @type_of_product.description %>
 
 <div id='product'>
   <% cache @products do %>

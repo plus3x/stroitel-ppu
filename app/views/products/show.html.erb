@@ -7,25 +7,7 @@
   <%= link_to @product.name, '' %>
 </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%=raw @product.description %>
-</p>
-
-<p>
-  <strong>Picture url:</strong>
-  <%= @product.picture_url %>
-</p>
+<%=raw @product.description %>
 
 <% if current_user %>
   <% if current_user.manager? or current_user.admin? %>
