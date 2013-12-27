@@ -46,17 +46,18 @@
     </div>
     <div class='clear'></div>
     <div id="main">
-      <ul id='services'>
         <h2>Деятельность компании</h2>
-        <% cache @products do %>
-          <%= render @services %>
+        <% cache Service.all do %>
+          <ul id='services'>
+            <%= render Service.all %>
+          </ul>
         <% end %>
-      </ul>
-      <%= yield %>
+        
+        <%= yield %>
     
-      <div id="bottom_banner">
-        <%= image_tag("bottom-banner.png") %>
-      </div>
+        <div id="bottom_banner">
+          <%= image_tag("bottom-banner.png") %>
+        </div>
     </div>
   </div>
   <div id="footer">

@@ -5,8 +5,13 @@
   <%= link_to @service.name, '' %>
 </div>
 
-  <%=raw @service.description %>
+<%=raw @service.description %>
 
+<% cache @service.type_of_products do %>
+  <ul id='type_of_products'>
+    <%= render @service.type_of_products %>
+  </ul>
+<% end %>
 
 <% if current_user %>
   <% if current_user.manager? or current_user.admin? %>
