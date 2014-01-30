@@ -29,38 +29,165 @@ else
 end
 
 Service.destroy_all
-services = Service.create([
-  { id: 1, name: 'Трубы ППУ',        title: 'Трубы ППУ от производителя', picture_url: nil, description: open('db/descriptions/services/pipes.html').read },
-  { id: 2, name: 'Фасонные изделия', title: 'Фасонные изделия',           picture_url: nil, description: open('db/descriptions/services/formed-parts.html').read },
-  { id: 3, name: 'New service',      title: 'Service title',              picture_url: nil, description: open('db/descriptions/services/3.html').read }
-])
-if services[0].save and services[1].save and services[2].save
-  puts "Default services: " + services.map(&:name).join(', ')
-else
-  puts '>>> Service list not created!'
+services = [
+  { id: 1, 
+	name: 'Трубы ППУ',        
+	title: 'Трубы ППУ от производителя', 
+	picture_url: nil, 
+	description: open('db/descriptions/services/pipes.html').read },
+  { id: 2, 
+	name: 'Фасонные изделия', 
+	title: 'Фасонные изделия',           
+	picture_url: nil, 
+	description: open('db/descriptions/services/formed-parts.html').read },
+  { id: 3, 
+	name: 'Строительство и реконструкция наружных инженерных сетей (канализация, тепловые сети, водопровод)',      
+	title: 'Строительство и реконструкция наружных инженерных сетей (канализация, тепловые сети, водопровод)',              
+	picture_url: nil, 
+	description: open('db/descriptions/services/external_utilities.html').read },
+  { id: 4, 
+	name: 'Изготовление и монтаж стальных винтовых свай (любой длины и диаметра для строительства дачных домой и коттеджей)',      
+	title: 'Изготовление и монтаж стальных винтовых свай (любой длины и диаметра для строительства дачных домой и коттеджей)',              
+	picture_url: nil, 
+	description: open('db/descriptions/services/screw_piles.html').read },
+  { id: 5, 
+	name: 'Изготовление фильтр-патронов для очистки сточных вод',      
+	title: 'Изготовление фильтр-патронов для очистки сточных вод',              
+	picture_url: nil, 
+	description: open('db/descriptions/services/filter.html').read },
+  { id: 6, 
+	name: 'Производство ж/б колец для колодцев',      
+	title: 'Производство ж/б колец для колодцев',              
+	picture_url: nil, 
+	description: open('db/descriptions/services/rings-for-wells.html').read },
+  { id: 7, 
+	name: 'Изготовление качелей (по индивидуальным заказам или готовые усиленной подъемности)',      
+	title: 'Изготовление качелей (по индивидуальным заказам или готовые усиленной подъемности)',              
+	picture_url: nil, 
+	description: open('db/descriptions/services/seesaw.html').read },
+  { id: 8, 
+	name: 'Продажа ж/б каналов, камер для строительства т/сетей',      
+	title: 'Продажа ж/б каналов, камер для строительства т/сетей',              
+	picture_url: nil, 
+	description: open('db/descriptions/services/prodazha-zb-kanalov.html').read },
+  { id: 9, 
+	name: 'Производство бытовок',      
+	title: 'Производство бытовок',              
+	picture_url: nil, 
+	description: open('db/descriptions/services/seesaw.html').read }
+]
+
+print "Default services: "
+Service.create(services).each do |item|
+  if item.save
+    print "#{item.id}, "
+  else
+    puts '>>> Service list not created!'
+  end
 end
+print "\n"
 
 TypeOfProduct.destroy_all
-type_of_products = TypeOfProduct.create([
-  { id: 1, name: 'Отводы в ППУ изоляции', title: 'Отводы в ППУ изоляции | ПСФ Строитель', picture_url: nil, service_id: 2, description: open('db/descriptions/type_of_products/taps_in_foam_insulation.html').read },
-  { id: 2, name: 'Тройники в ППУ изоляции', title: 'Тройники в ППУ изоляции | ПСФ Строитель', picture_url: nil, service_id: 2, description: open('db/descriptions/type_of_products/tees.html').read },
-  { id: 3, name: 'New type of product', title: 'Type of product title', picture_url: nil, service_id: 3, description: open('db/descriptions/type_of_products/3.html').read }
-])
-if type_of_products[0].save and type_of_products[1].save and type_of_products[2].save
-  puts "Default type of products: " + type_of_products.map(&:name).join(', ')
-else
-  puts '>>> Type of product list not created!'
+type_of_products = [
+  { id: 1, name: 'Отводы в ППУ изоляции', 		title: 'Отводы в ППУ изоляции', picture_url: nil, service_id: 2,
+		description: open('db/descriptions/type_of_products/taps_in_foam_insulation.html').read },
+  { id: 2, name: 'Тройники в ППУ изоляции', 		title: 'Тройники в ППУ изоляции', picture_url: nil, service_id: 2, 
+		description: open('db/descriptions/type_of_products/tees.html').read },
+  { id: 3, name: 'Тройниковые ответвления', 		title: 'Тройниковые ответвления', picture_url: nil, service_id: 2, 
+		description: open('db/descriptions/type_of_products/tee_branch.html').read },
+  { id: 4, name: 'Тройники параллельные', 			title: 'Тройники параллельные', picture_url: nil, service_id: 2, 
+		description: open('db/descriptions/type_of_products/tee_parallel.html').read },
+  { id: 5, name: 'Z-образные элементы', 			title: 'Z-образные элементы', picture_url: nil, service_id: 2, 
+		description: open('db/descriptions/type_of_products/z-type.html').read },
+  { id: 6, name: 'New type of product', 			title: 'Type of product title', picture_url: nil, service_id: 3, 
+		description: open('db/descriptions/type_of_products/3.html').read }
+]
+
+print "Default TypeOfProducts: "
+TypeOfProduct.create(type_of_products).each do |item|
+  if item.save
+    print "#{item.id}, "
+  else
+    puts '>>> TypeOfProduct list not created!'
+  end
 end
+print "\n"
+
 
 Product.destroy_all
 products = [
-  { id: 1, name: 'Отводы в ППУ изоляции в оболочке из полиэтилена',          title: 'Отводы в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель',          picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_pe.html').read },
-  { id: 2, name: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали',   title: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель',   picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_oc.html').read },
-  { id: 3, name: 'Двойные отводы',                                           title: 'Двойные отводы | ПСФ Строитель',                                           picture_url: nil, type_of_product_id: 1, description: open('db/descriptions/products/taps_in_foam_insulation_double.html').read },
-	{ id: 4, name: 'Тройники в ППУ изоляции в оболочке из полиэтилена',        title: 'Тройники в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель',        picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_pe.html').read },
-	{ id: 5, name: 'Тройники в ППУ изоляции в оболочке из оцинкованной стали', title: 'Тройники в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель', picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_oc.html').read },
-	{ id: 6, name: 'Двойные тройники',                                         title: 'Двойные тройники | ПСФ Строитель',                                         picture_url: nil, type_of_product_id: 2, description: open('db/descriptions/products/tees_double.html').read },
-	{ id: 7, name: 'New product',                                              title: 'Product title',                                                            picture_url: nil, type_of_product_id: 3, description: open('db/descriptions/products/1.html').read }
+  { id: 1, 
+	name: 'Отводы в ППУ изоляции в оболочке из полиэтилена',          
+	title: 'Отводы в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель',          
+	picture_url: nil, 
+	type_of_product_id: 1, 
+	description: open('db/descriptions/products/taps_in_foam_insulation_pe.html').read },
+  { id: 2, 
+	name: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали',   
+	title: 'Отводы в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель',   
+	picture_url: nil, 
+	type_of_product_id: 1, 
+	description: open('db/descriptions/products/taps_in_foam_insulation_oc.html').read },
+  { id: 3, 
+	name: 'Двойные отводы',                                           
+	title: 'Двойные отводы | ПСФ Строитель',                                           
+	picture_url: nil, 
+	type_of_product_id: 1, 
+	description: open('db/descriptions/products/taps_in_foam_insulation_double.html').read },
+  { id: 4, 
+	name: 'Тройники в ППУ изоляции в оболочке из полиэтилена',        
+	title: 'Тройники в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель',        
+	picture_url: nil, 
+	type_of_product_id: 2, 
+	description: open('db/descriptions/products/tees_pe.html').read },
+  { id: 5, 
+	name: 'Тройники в ППУ изоляции в оболочке из оцинкованной стали', 
+	title: 'Тройники в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель', 
+	picture_url: nil, 
+	type_of_product_id: 2, 
+	description: open('db/descriptions/products/tees_oc.html').read },
+  { id: 6, 
+	name: 'Двойные тройники',                                         
+	title: 'Двойные тройники | ПСФ Строитель',                                         
+	picture_url: nil, 
+	type_of_product_id: 2, 
+	description: open('db/descriptions/products/tees_double.html').read },
+  { id: 7, 
+	name: 'Тройниковые ответвления в ППУ изоляции в оболочке из полиэтилена',                                         
+	title: 'Тройниковые ответвления в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель',                                         
+	picture_url: nil, 
+	type_of_product_id: 3, 
+	description: open('db/descriptions/products/tee_branch_pe.html').read },
+  { id: 8, 
+	name: 'Тройниковые ответвления в ППУ изоляции в оболочке из оцинкованной стали',                                         
+	title: 'Тройниковые ответвления в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель',                                         
+	picture_url: nil, 
+	type_of_product_id: 3, 
+	description: open('db/descriptions/products/tee_branch_oc.html').read },
+  { id: 9, 
+	name: 'Тройники параллельные в ППУ изоляции в оболочке из полиэтилена',                                         
+	title: 'Тройники параллельные в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель',                                         
+	picture_url: nil, 
+	type_of_product_id: 4, 
+	description: open('db/descriptions/products/tee_parallel_pe.html').read },
+  { id: 10, 
+	name: 'Тройники параллельные в ППУ изоляции в оболочке из оцинкованной стали',                                         
+	title: 'Тройники параллельные в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель',                                         
+	picture_url: nil, 
+	type_of_product_id: 4, 
+	description: open('db/descriptions/products/tee_parallel_oc.html').read },
+  { id: 11, 
+	name: 'Z-образные элементы в ППУ изоляции в оболочке из полиэтилена',                                         
+	title: 'Z-образные элементы в ППУ изоляции в оболочке из полиэтилена | ПСФ Строитель',                                         
+	picture_url: nil, 
+	type_of_product_id: 5, 
+	description: open('db/descriptions/products/z-type_pe.html').read },
+  { id: 12, 
+	name: 'Z-образные элементы в ППУ изоляции в оболочке из оцинкованной стали',                                         
+	title: 'Z-образные элементы в ППУ изоляции в оболочке из оцинкованной стали | ПСФ Строитель',                                         
+	picture_url: nil, 
+	type_of_product_id: 5, 
+	description: open('db/descriptions/products/z-type_oc.html').read }
 ]
 print "Default products: "
 Product.create(products).each do |product|
@@ -74,15 +201,41 @@ print "\n"
 
 SeoMeta.destroy_all
 seometa = [
-  { id: 1, keywords: 'Service meta key words',         description: 'Service meta description', service_id: 1 },
-  { id: 2, keywords: 'Service meta key words',         description: 'Service meta description', service_id: 2 },
-  { id: 3, keywords: 'Service meta key words',         description: 'Service meta description', service_id: 3 },
-  { id: 4, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 1 },
-  { id: 5, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 2 },
-  { id: 6, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 3 },
-  { id: 7, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 1 },
-  { id: 8, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 2 },
-  { id: 9, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 3 }
+  { id: 1, keywords: 'Трубы ППУ от производителя',         	description: 'Трубы ППУ от производителя', service_id: 1 },
+  { id: 2, keywords: 'Фасонные изделия',         				description: 'Фасонные изделия', service_id: 2 },
+  { id: 3, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 3 },
+  { id: 4, keywords: 'Отводы в ППУ изоляции', 					description: 'Type of product meta description', type_of_product_id: 1 },
+  { id: 5, keywords: 'Тройники в ППУ изоляции', 				description: 'Type of product meta description', type_of_product_id: 2 },
+  { id: 6, keywords: 'Тройниковые ответвления', 				description: 'Type of product meta description', type_of_product_id: 3 },
+  { id: 7, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 4 },
+  { id: 8, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 5 },
+  { id: 9, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 6 },
+  { id: 10, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 7 },
+  { id: 11, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 8 },
+  { id: 12, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 9 },
+  { id: 13, keywords: 'Type of product meta key words', description: 'Type of product meta description', type_of_product_id: 10 },
+  { id: 14, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 1 },
+  { id: 15, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 2 },
+  { id: 16, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 3 },
+  { id: 17, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 4 },
+  { id: 18, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 5 },
+  { id: 19, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 6 },
+  { id: 20, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 7 },
+  { id: 21, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 8 },
+  { id: 22, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 9 },
+  { id: 23, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 10 },
+  { id: 24, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 11 },
+  { id: 25, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 12 },
+  { id: 26, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 13 },
+  { id: 27, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 14 },
+  { id: 28, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 15 },
+  { id: 29, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 16 },
+  { id: 30, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 4 },
+  { id: 31, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 5 },
+  { id: 32, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 6 },
+  { id: 33, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 7 },
+  { id: 34, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 8 },
+  { id: 35, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 9 },
 ]
 print "Default seo meta: "
 SeoMeta.create(seometa).each do |seo_meta|
