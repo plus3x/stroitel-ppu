@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.11111111111.0'
+ruby '2.1.0'
 
 # For SEO
 gem 'sitemap_generator'
