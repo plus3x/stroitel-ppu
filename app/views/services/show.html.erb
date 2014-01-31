@@ -1,22 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="boby">
 
-<div class='path'>
-  <%= link_to 'Main', main_path %>
-  <%= link_to @service.name, '' %>
+	<p id="notice"><%= notice %></p>
+
+	<div class='path'>
+	  <%= link_to 'Main', main_path %>
+	  <%= link_to @service.name, '' %>
+	</div>
+
+	<%=raw @service.description %>
+
+	<% cache @service.type_of_products do %>
+	  <ul id='type_of_products'>
+		 <%= render @service.type_of_products %>
+	  </ul>
+	<% end %>
+
+	<% if current_user %>
+	  <% if current_user.manager? or current_user.admin? %>
+		 <%= link_to 'New type of product', new_service_type_of_product_path(@service) %>
+		 <%= link_to 'Edit', edit_service_path(@service) %> |
+		 <%= link_to 'Back', services_path %>
+	  <% end %>
+	<% end %>
 </div>
-
-<%=raw @service.description %>
-
-<% cache @service.type_of_products do %>
-  <ul id='type_of_products'>
-    <%= render @service.type_of_products %>
-  </ul>
-<% end %>
-
-<% if current_user %>
-  <% if current_user.manager? or current_user.admin? %>
-    <%= link_to 'New type of product', new_service_type_of_product_path(@service) %>
-    <%= link_to 'Edit', edit_service_path(@service) %> |
-    <%= link_to 'Back', services_path %>
-  <% end %>
-<% end %>
