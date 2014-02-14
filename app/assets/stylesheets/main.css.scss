@@ -6,7 +6,7 @@ body#main {
   #home {
     float: left;
     padding-left: 15px;
-    width: 45%;
+    width: 65%;
     h1 {
       color: #592556;
       font-weight: bold;
@@ -24,7 +24,7 @@ body#main {
   }
 }
 #bottom_banner{
-  margin-left: -290px;
+  margin-left: 0px;
 }
 
 .path {
@@ -85,3 +85,62 @@ width: 80%;
 .table-ppu th.line { padding: 2px 0 0 0; }
 .odd, .odd td { background: #D6DAE0; }
 .even, .even td { background: none; }
+#truba_1 {
+        width: 419px;
+        height: 239px;
+        position: absolute;
+        left: 1%;
+        background: url(/images/truba_1.png) left top no-repeat;
+    z-index: 100;
+}
+ #truba_2 {
+ width: 380px;
+        height: 226px;
+        position: absolute;
+        left: 13%;
+        top: 10px;
+        
+ background: url(/images/truba_2.png) left top no-repeat;
+    z-index: 100;
+}
+#truba_3 {
+width: 352px;
+        height: 219px;
+        position: absolute;
+        left: 27%;
+        top: 8px;
+        
+background: url(/images/truba_3.png) left top no-repeat;
+    z-index: 100;
+}
+
+#truba_4 {
+width: 362px;
+        height: 233px;
+        position: absolute;
+        left: 49%;
+        background: url(/images/truba_4.png) left top no-repeat;
+    z-index: 100;
+}
+
+#truba_5 {
+width: 280px;
+        height: 208px;
+        position: absolute;
+        left: 70%;
+        top: 10px;
+        background: url(/images/truba_5.png) left top no-repeat;
+    z-index: 100;
+    overflow:hidden;
+}
+#header_trubs {
+    height: 240px;
+    left: 10%;
+    top: 130px;
+    position: absolute;
+    min-width: 800px;
+    max-width: 1250px;
+    z-index: 100;
+    overflow: hidden;
+    width: 80%;
+}

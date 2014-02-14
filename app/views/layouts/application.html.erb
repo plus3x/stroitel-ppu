@@ -42,11 +42,10 @@
   </div>
   <div id="content">
     <div id='banner'>
-      <%= image_tag("headbox.png") %>
+      <%= image_tag("headbox2.png") %>
     </div>
     <div class='clear'></div>
     <div id="main">
-        <h2>Деятельность компании</h2>
         <% cache Service.all do %>
           <ul id='services'>
             <%= render Service.all %>
