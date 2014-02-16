@@ -22,7 +22,7 @@
     </div>
     <div id="side"> 
       <ul class='left'>
-        <li><%= link_to_unless_current t('.main_page'),              main_path %></li>
+    <!--    <li><%= link_to_unless_current t('.main_page'),              main_path %></li> -->
         <li><%= link_to_unless_current t('.contacts_page'),      contacts_path %></li>
         <li><%= link_to_unless_current t('.production_page'),  production_path %></li>
       </ul>
@@ -67,7 +67,7 @@
         195220, г. Санкт-Петербург, пр. Науки, дом 19, корпус 2, подъезд 11, 4 этаж
     </div>
     <div id="contacts">
-       Телефоны/Факс: 8 (812) 536-22-15, 8 (812) 536-22-17 <br> email <%= mail_to 'stroitel-ppu@yandex.ru' %>
+       Телефоны/Факс: 8 (812) <strong>536-22-15</strong>, 8 (812) <strong>536-22-17</strong> <br> email <%= mail_to 'stroitel-ppu@yandex.ru' %>
     </div>
   </div>
 </body>
