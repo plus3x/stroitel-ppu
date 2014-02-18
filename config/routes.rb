@@ -1,5 +1,7 @@
 StroitelPpu::Application.routes.draw do
 
+  resources :debtors
+
   resources :orders
 
   root to: 'main#index', as: 'main'
