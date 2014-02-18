@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
   before_action :set_public_proxy_refresh, only: [:show, :index]
+  before_action :select_debtors
   
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -23,5 +24,9 @@ class ApplicationController < ActionController::Base
       fresh_when [@services, current_user], public: true
       expires_now if stale? current_user.to_s
       expires_in 10.minutes, public: true
+    end
+    
+    def select_debtors
+      @debtor = Debtor.first
     end
 end
