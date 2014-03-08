@@ -74,7 +74,12 @@ services = [
 	name: 'Производство бытовок',      
 	title: 'Производство бытовок',              
 	picture_url: nil, 
-	description: open('db/descriptions/services/huts.html').read }
+	description: open('db/descriptions/services/huts.html').read },
+  { id: 10, 
+	name: 'Футеровка пластиком внутренней поверхности железобетонных колодцев',      
+	title: 'Футеровка пластиком внутренней поверхности железобетонных колодцев',              
+	picture_url: nil, 
+	description: open('db/descriptions/services/foterovka.html').read }
 ]
 
 print "Default services: "
@@ -347,6 +352,7 @@ seometa = [
   { id: 57, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 7 },
   { id: 58, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 8 },
   { id: 59, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 9 },
+  { id: 60, keywords: 'футеровка пластиком, футеровка +ж +б колодцев, футеровка колодцев, футеровка оборудования, футеровка',         		description: 'Футеровка ж/б колодцев', service_id: 10 },
 ]
 print "Default seo meta: "
 SeoMeta.create(seometa).each do |seo_meta|
