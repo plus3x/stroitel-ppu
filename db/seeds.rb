@@ -290,6 +290,22 @@ Product.create(products).each do |product|
 end
 print "\n"
 
+Debtor.destroy_all
+debtors = [
+  { id: 1,      
+	title: 'Должники', 
+	content: open('db/descriptions/debtors/debtors.html').read }
+]
+print "Default debtors: "
+Debtor.create(debtors).each do |debtor|
+  if debtor.save
+    print "#{debtor.id}, "
+  else
+    puts '>>> Debtor list not created!'
+  end
+end
+print "\n"
+
 SeoMeta.destroy_all
 seometa = [
 
