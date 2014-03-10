@@ -61,7 +61,7 @@ services = [
 	picture_url: nil, 
 	description: open('db/descriptions/services/screw_piles.html').read },
   { id: 7, 
-	name: 'Фильтр-патрон',      
+	name: 'Фильтр-патрон ФИПОС',      
 	title: 'Изготовление фильтр-патронов для очистки сточных вод',              
 	picture_url: nil, 
 	description: open('db/descriptions/services/filter.html').read },
@@ -127,7 +127,11 @@ type_of_products = [
   { id: 16, name: 'Скользящие опоры', 			title: 'Скользящие опоры', picture_url: nil, service_id: 2, 
 		description: open('db/descriptions/type_of_products/skolizyaschie_opory.html').read },
   { id: 17, name: 'Железобетонные неподвижные опоры', 			title: 'Железобетонные неподвижные опоры', picture_url: nil, service_id: 2, 
-		description: open('db/descriptions/type_of_products/fixed-ppu.html').read }
+		description: open('db/descriptions/type_of_products/fixed-ppu.html').read },
+  { id: 18, name: 'Концевые элементы', 			title: 'Концевые элементы', picture_url: nil, service_id: 2, 
+		description: open('db/descriptions/type_of_products/koncevye_elementy.html').read },
+  { id: 19, name: 'Рядовые элементы', 			title: 'Рядовые элементы', picture_url: nil, service_id: 2, 
+		description: open('db/descriptions/type_of_products/ordinary_items.html').read }
 ]
 
 print "Default TypeOfProducts: "
@@ -289,13 +293,13 @@ print "\n"
 SeoMeta.destroy_all
 seometa = [
 
-  { id: 1, 	keywords: 'Отводы в ППУ изоляции', 					description: 'Type of product meta description', type_of_product_id: 1 },
-  { id: 2, 	keywords: 'Тройники в ППУ изоляции', 				description: 'Type of product meta description', type_of_product_id: 2 },
-  { id: 3, 	keywords: 'Тройниковые ответвления', 				description: 'Type of product meta description', type_of_product_id: 3 },
-  { id: 4, 	keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 4 },
-  { id: 5,	keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 5 },
+  { id: 1, 	keywords: 'отводы +в ппу изоляции, вес отводов +в ппу изоляции, отвод стальной +в изоляции ппу', 					description: 'Отводы в ППУ изоляции', type_of_product_id: 1 },
+  { id: 2, 	keywords: 'тройник +в ппу изоляции, тройник +в ппу', 				description: 'Тройники в ППУ изоляции', type_of_product_id: 2 },
+  { id: 3, 	keywords: 'Тройниковые ответвления, тройниковое ответвление +в ппу, тройниковые ответвления +в оц', 				description: 'Тройниковые ответвления', type_of_product_id: 3 },
+  { id: 4, 	keywords: 'Тройники параллельные,тройник параллельный', 		description: 'Тройник параллельный', type_of_product_id: 4 },
+  { id: 5,	keywords: 'Z-образные элементы, z образный элемент', 		description: 'Z-образные элементы', type_of_product_id: 5 },
   { id: 6, 	keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 6 },
-  { id: 7, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 7 },
+  { id: 7, keywords: 'Опорные подушки ппу,опорная подушка, оп ппу', 		description: 'Опорные подушки', type_of_product_id: 7 },
   { id: 8, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 8 },
   { id: 9, keywords: 'Железо/бетонные кольца, кольца, жб кольца, ж/б кольца', 		description: 'Железо/бетонные кольца для колодцев', type_of_product_id: 9 },
   { id: 10, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 10 },
@@ -304,10 +308,10 @@ seometa = [
   { id: 13, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 13 },
   { id: 14, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 14 },
   { id: 15, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 15 },
-  { id: 16, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 16 },
+  { id: 16, keywords: 'Скользящие опоры, опора под скользящую опору,изготовление скользящих опор,скользящие +и неподвижные опоры,	скользящие опоры ппу', 		description: 'Скользящие опоры', type_of_product_id: 16 },
   { id: 17, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 17 },
-  { id: 18, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 18 },
-  { id: 19, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 19 },
+  { id: 18, keywords: 'Концевые элементы,концевые элементы ппу,концевой элемент трубопровода,концевой элемент', 		description: 'Концевые элементы', type_of_product_id: 18 },
+  { id: 19, keywords: 'Фасонный рядовой элемент, рядовые элементы', 		description: 'Фасонный рядовой элемент', type_of_product_id: 19 },
   { id: 20, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 20 },
  
   { id: 21, keywords: 'Product meta key words',         description: 'Product meta description', product_id: 1 },
@@ -344,14 +348,14 @@ seometa = [
 
 
   { id: 51, keywords: 'Трубы ППУ от производителя',        	description: 'Трубы ППУ от производителя', service_id: 1 },
-  { id: 52, keywords: 'Фасонные изделия',         				description: 'Фасонные изделия', service_id: 2 },
+  { id: 52, keywords: 'Фасонные изделия, фасонные изделия труб,фасонные изделия +для трубопроводов, фасонные изделия ппу,фасонные изделия +в ппу изоляции',         				description: 'Фасонные изделия', service_id: 2 },
   { id: 53, keywords: 'элементы, теплотрасс, элементы теплотрасс, каналы, подушки, опорные подушки, тепловые камеры, жб кольца, ж/б кольца',         		description: 'Элементы теплотрасс', service_id: 3 },
   { id: 54, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 4 },
   { id: 55, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 5 },
   { id: 56, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 6 },
-  { id: 57, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 7 },
+  { id: 57, keywords: 'Фильтр-патрон ФИПОС, ФИПОС-1,ФИПОС-2,ФИПОС-3,ФИПОС-4,Фильтр патрон, ФП, фп',         		description: 'Фильтр-патрон ФИПОС', service_id: 7 },
   { id: 58, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 8 },
-  { id: 59, keywords: 'Service meta key words',         		description: 'Service meta description', service_id: 9 },
+  { id: 59, keywords: 'Производство бытовок, бытовки, строительные бытовки, производство дачных бытовок, бытовки дачные, изготовление бытовок, сборка бытовок',         		description: 'Производство бытовок', service_id: 9 },
   { id: 60, keywords: 'футеровка пластиком, футеровка +ж +б колодцев, футеровка колодцев, футеровка оборудования, футеровка',         		description: 'Футеровка ж/б колодцев', service_id: 10 },
 ]
 print "Default seo meta: "
