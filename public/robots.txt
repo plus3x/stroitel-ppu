@@ -3,3 +3,45 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-agent: *
 # Disallow: /
+
+Host: www.stroitel-ppu.ru
+
+User-agent: *
+Allow: /
+Disallow: /login
+Disallow: */new$
+Disallow: */edit$
+Sitemap: http://www.stroitel-ppu.ru/sitemap1.xml.gz
+Sitemap: http://www.stroitel-ppu.ru/sitemap_index.xml.gz
+
+User-agent: Yandex
+Allow: /
+Disallow: /login
+Disallow: */new$
+Disallow: */edit$
+Sitemap: http://www.stroitel-ppu.ru/sitemap1.xml.gz
+Sitemap: http://www.stroitel-ppu.ru/sitemap_index.xml.gz
+
+User-agent: googlebot
+Allow: /
+Disallow: /login
+Disallow: */new$
+Disallow: */edit$
+Sitemap: http://www.stroitel-ppu.ru/sitemap1.xml.gz
+Sitemap: http://www.stroitel-ppu.ru/sitemap_index.xml.gz
+
+User-agent: StackRambler
+Allow: /
+Disallow: /login
+Disallow: */new$
+Disallow: */edit$
+Sitemap: http://www.stroitel-ppu.ru/sitemap1.xml.gz
+Sitemap: http://www.stroitel-ppu.ru/sitemap_index.xml.gz
+
+User-agent: Mail.Ru
+Allow: /
+Disallow: /login
+Disallow: */new$
+Disallow: */edit$
+Sitemap: http://www.stroitel-ppu.ru/sitemap1.xml.gz
+Sitemap: http://www.stroitel-ppu.ru/sitemap_index.xml.gz
