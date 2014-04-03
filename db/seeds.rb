@@ -326,7 +326,7 @@ seometa = [
   { id: 12, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 12 },
   { id: 13, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 13 },
   { id: 14, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 14 },
-  { id: 15, keywords: 'Type of product meta key words', 		description: 'Type of product meta description', type_of_product_id: 15 },
+  { id: 15, keywords: 'компенсаторы, сильфонный компенсатор, осевой компенсатор, компенсатор сильфонный осевой, сильфонный компенсатор +в ппу', 		description: 'Сильфонные компенсаторы позволяют исключить различные деформации на трубопроводах под влиянием перепада температур или вибраций', type_of_product_id: 15 },
   { id: 16, keywords: 'Скользящие опоры, опора под скользящую опору,изготовление скользящих опор,скользящие +и неподвижные опоры,	скользящие опоры ппу', 		description: 'Скользящие опоры', type_of_product_id: 16 },
   { id: 17, keywords: 'Неподвижные щитовые опоры, НЩО, опора неподвижная щитовая, неподвижные щитовые опоры +для трубопроводов, неподвижная щитовая опора ппу', 		description: 'Неподвижные щитовые опоры', type_of_product_id: 17 },
   { id: 18, keywords: 'Концевые элементы,концевые элементы ппу,концевой элемент трубопровода,концевой элемент', 		description: 'Концевые элементы', type_of_product_id: 18 },
