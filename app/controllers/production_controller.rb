@@ -1,4 +1,5 @@
 class ProductionController < ApplicationController
+  # GET /productions
   def index
     fresh_when [File.mtime('app/views/production/index.html.erb'), current_user], public: true
     @head_title       = I18n.t('.production.index.head_title')

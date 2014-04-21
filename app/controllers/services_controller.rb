@@ -1,6 +1,5 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, except: [:show, :index]
 
   # GET /services
   def index
@@ -23,8 +22,7 @@ class ServicesController < ApplicationController
 
   # GET /services/new
   def new
-    @service = Service.new
-    @service.seo_meta = SeoMeta.new
+    @service = Service.new seo_meta: SeoMeta.new
   end
 
   # GET /services/1/edit
@@ -47,7 +45,7 @@ class ServicesController < ApplicationController
   # PATCH/PUT /services/1
   def update
     respond_to do |format|
-      if @service.update(service_params) and @service.seo_meta.update(service_params[:seo_meta_attributes])
+      if @service.update service_params
         format.html { redirect_to @service, notice: 'Service was successfully updated.' }
       else
         format.html { render action: 'edit' }
@@ -57,7 +55,6 @@ class ServicesController < ApplicationController
 
   # DELETE /services/1
   def destroy
-    @service.seo_meta.destroy
     @service.destroy
     respond_to do |format|
       format.html { redirect_to services_url }
@@ -65,12 +62,10 @@ class ServicesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_service
       @service = Service.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
       params.require(:service).permit(:name, :title, :description, :picture_url, seo_meta_attributes: [:keywords, :description])
     end

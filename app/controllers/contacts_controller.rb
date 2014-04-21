@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  # GET /contacts
   def index
     fresh_when [File.mtime('app/views/contacts/index.html.erb'), current_user], public: true
     @head_title       = I18n.t('.contacts.index.head_title')

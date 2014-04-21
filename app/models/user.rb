@@ -1,20 +1,23 @@
 class User < ActiveRecord::Base
-  belongs_to :role
   has_secure_password
 
-  validates_presence_of :name
-  validates_uniqueness_of :name
-  
-  def admin?
-    role.title == 'admin'
+  self.inheritance_column = 'role'
+  def self.model_name
+    ActiveModel::Name.new(User)
   end
-  
-  def manager?
-    role.title == 'manager'
-  end
-  
-  def can?(controller, action)
-    role.permit?(controller, action)
-  end
-  
+
+  enum role: {
+    admin:   'Role::Admin',
+    manager: 'Role::Manager',
+    guest:   'Role::Guest'
+  }
+
+  validates_presence_of :name, :role
+
+  private
+
+    def can_do?(args={})
+      not (args[:controllers] & [@controller.to_sym]).empty? and
+      (not (   args[:actions] & [@action.to_sym]    ).empty? rescue true)
+    end
 end

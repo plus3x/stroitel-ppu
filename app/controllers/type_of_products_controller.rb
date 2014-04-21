@@ -1,6 +1,5 @@
 class TypeOfProductsController < ApplicationController
   before_action :set_type_of_product, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, except: [:show, :index]
 
   # GET /services/:service_id/type_of_products
   def index
@@ -71,12 +70,10 @@ class TypeOfProductsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_type_of_product
       @type_of_product = TypeOfProduct.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def type_of_product_params
       params.require(:type_of_product).permit(:name, :title, :description, :picture_url, seo_meta_attributes: [:keywords, :description])
     end

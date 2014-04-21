@@ -1,9 +1,5 @@
 StroitelPpu::Application.routes.draw do
 
-  resources :debtors
-
-  resources :orders
-
   root to: 'main#index', as: 'main'
   
   resources :users  
@@ -18,6 +14,9 @@ StroitelPpu::Application.routes.draw do
       resources :products
     end
   end
+
+  resources :debtors
+  resources :orders
 
   get 'contacts'   =>   'contacts#index'
   get 'about'      =>      'about#index'

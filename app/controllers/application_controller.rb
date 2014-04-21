@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
+  before_action :authorize
   before_action :set_public_proxy_refresh, only: [:show, :index]
   before_action :select_debtors
   
@@ -10,20 +11,14 @@ class ApplicationController < ActionController::Base
   protected
   
     def authorize
-      if current_user
-        unless current_user.can?(params[:controller], params[:action])
-          redirect_to main_url, notice: 'You no have permissions to do this.'
-        end
-      else
-        redirect_to main_url, notice: "Please log in"
+      unless current_user.can?(params[:action], params[:controller])
+        redirect_to main_url, notice: 'You no have permissions to do this.'
       end
     end
     
     def set_public_proxy_refresh
-      @services = Service.all
-      fresh_when [@services, current_user], public: true
       expires_now if stale? current_user.to_s
-      expires_in 10.minutes, public: true
+      expires_in 4.hours, public: true
     end
     
     def select_debtors
