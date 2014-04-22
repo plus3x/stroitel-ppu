@@ -1,13 +1,5 @@
-= form_for(@debtor) do |f|
-  - if @debtor.errors.any?
-    #error_explanation
-      h2
-        = pluralize(@debtor.errors.count, 'error')
-        |  prohibited this debtor from being saved:
-      ul
-        - @debtor.errors.full_messages.each do |msg|
-          li= msg
-
+= form_for @debtor do |f|
+  = f.error_messages
   .field
     = f.label :title
     br

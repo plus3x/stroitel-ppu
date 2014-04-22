@@ -62,7 +62,7 @@ class TypeOfProductsController < ApplicationController
   def destroy
     @type_of_product.destroy
     respond_to do |format|
-      format.html { redirect_to service_url }
+      format.html { redirect_to Service.find(params[:service_id]) }
     end
   end
 

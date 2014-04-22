@@ -5,7 +5,7 @@ gem 'rails', '4.1.0'
 gem 'bcrypt-ruby'
 
 gem 'slim'
-# gem 'dynamic_form'
+gem 'dynamic_form'
 gem 'sass-rails', '~> 4.0.3'
 gem 'coffee-rails', '~> 4.0.0'
 

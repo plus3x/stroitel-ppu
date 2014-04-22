@@ -1,10 +1,2 @@
 - cache service do
   li= link_to service.name, service
-  
-  - if current_user.manager? or current_user.admin?
-    li.action
-      = link_to t('show'), sro_permission
-      | |
-      = link_to t('edit'), edit_sro_permission_path(sro_permission)
-      | |
-      = link_to t('destroy'), sro_permission, method: :delete, data: { confirm: 'Are you sure?' }

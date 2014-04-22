@@ -1,13 +1,5 @@
 = form_for(@service) do |f|
-  - if @service.errors.any?
-    #error_explanation
-      h2
-        = pluralize(@service.errors.count, "error")
-        |  prohibited this service from being saved:
-      ul
-        - @service.errors.full_messages.each do |msg|
-          li= msg
-
+  = f.error_messages
   = f.fields_for :seo_meta do |seo_form|
     .field
       = seo_form.label 'SEO keywords: '

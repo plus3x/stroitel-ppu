@@ -1,13 +1,6 @@
 .form
   = form_for @user do |f|
-    - if @user.errors.any?
-      #error_explanation
-        h2
-          = pluralize(@user.errors.count, "error")
-        ul
-          - @user.errors.full_messages.each do |msg|
-            li= msg
-
+    = f.error_messages
     fieldset
       legend
         | Enter User Details
@@ -22,6 +15,6 @@
         = f.password_field :password_confirmation, size: 40
       .field
         = f.label :role
-        = f.collection_select :role_id, User.roles, :last, :first
+        = f.collection_select :role, User.roles, :last, :first
       .actions
         = f.submit

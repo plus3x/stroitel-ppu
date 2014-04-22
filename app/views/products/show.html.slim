@@ -5,9 +5,12 @@ p#notice= notice
   = link_to @type_of_product.name, [@service, @type_of_product]
   = link_to @product.name, ''
 
-=raw @product.description
-
 - if current_user.manager? or current_user.admin?
-  = link_to 'Edit', edit_service_type_of_product_product_path(@service, @type_of_product, @product)
-  |  | 
-  = link_to 'Back', service_type_of_product_products_path(@service, @type_of_product)
+  h4
+    | Действия над продуктом: 
+    .action
+      = link_to t('edit'), edit_service_type_of_product_product_path(@service, @type_of_product, @product)
+      | |
+      = link_to t('destroy'), service_type_of_product_product_path(@service, @type_of_product, @product), method: :delete, data: { confirm: 'Are you sure?' }
+
+=raw @product.description

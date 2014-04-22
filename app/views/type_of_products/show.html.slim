@@ -4,14 +4,19 @@ p#notice= notice
   = link_to @service.name, @service
   = link_to @type_of_product.name, ''
 
+- if current_user.manager? or current_user.admin?
+  h4
+    | Действия над типом продукции: 
+    .action
+      = link_to t('edit'), edit_service_type_of_product_path(@service, @type_of_product)
+      | |
+      = link_to t('destroy'), service_type_of_product_path(@service, @type_of_product), method: :delete, data: { confirm: 'Are you sure?' }
+
 =raw @type_of_product.description
 
 #product
   - cache @products do
     = render @products
 
-- if current_user.manager? or current_user.admin?
-  = link_to 'New product', new_service_type_of_product_product_path(@service, @type_of_product)
-  = link_to 'Edit', edit_service_type_of_product_path(@service, @type_of_product)
-  |  | 
-  = link_to 'Back', service_type_of_products_path(@service)
+    - if current_user.manager? or current_user.admin?
+      = link_to 'New product', new_service_type_of_product_product_path(@service, @type_of_product)
