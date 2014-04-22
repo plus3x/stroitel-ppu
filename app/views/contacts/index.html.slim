@@ -1,0 +1,52 @@
+h1
+  | Контакты
+div
+  div
+    b
+      | Юридический адрес:
+    p[style="margin-left: 40px;"]
+      span
+        | 195220, г. Санкт-Петербург, пр. Науки, дом 19, корпус 2, лит. А, пом. 53-Н
+  div
+    b
+      | Фактический адрес:
+    p[style="margin-left: 40px;"]
+      span
+        | 195220, г. Санкт-Петербург, пр. Науки, дом 19, корпус 2, лит. А, пом. 53-Н, подъезд 11, 4 этаж
+  div
+    b
+      | Телефоны:
+    p[style="margin-left: 40px;"]
+      |  Телефон: (812) 536-22-15
+    p[style="margin-left: 40px;"]
+      |  Телефон: (812) 536-22-17
+  div
+    b
+      | Электронная почта:
+    p[style="margin-left: 40px;"]
+      |  e-mail: 
+      = mail_to 'stroitel-ppu@yandex.ru', content_tag(:strong, 'stroitel-ppu@yandex.ru'), class: :orange
+  div
+    strong: b
+      | График работы офиса:
+    p[style="margin-left: 40px;"]
+      span
+        | По будням с 9:00 до 17:00
+    p[style="margin-left: 40px;"]
+      |  Обед с 12:00 до 13:00
+    p[style="margin-left: 40px;"]
+      span
+        | суббота, воскресенье - выходной
+  div
+    script[type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=cS2m5vUVlcwy5RPYbQiu4SLtH4IMHI1S&width=600&height=450"]
+  div
+    strong: b
+      | График работы производства:
+    p[style="margin-left: 40px;"]
+      span
+        | По будням с 8:00 до 16:30
+    p[style="margin-left: 40px;"]
+      span
+        | суббота, воскресенье - выходной
+  div
+    script[type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=OWUj3hqloXTafTdyVr6vEuab8ojBNcKt&width=600&height=450"]

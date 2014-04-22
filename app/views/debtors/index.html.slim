@@ -1,0 +1,24 @@
+h1
+  | Listing debtors
+table
+  thead
+    tr
+      th
+        | Title
+      th
+        | Content
+      th
+      th
+      th
+  tbody
+    - @debtors.each do |debtor|
+      tr
+        td= debtor.title
+        td= debtor.content
+        td= link_to 'Show', debtor
+        td= link_to 'Edit', edit_debtor_path(debtor)
+        td= link_to 'Destroy', debtor, method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+
+= link_to 'New Debtor', new_debtor_path

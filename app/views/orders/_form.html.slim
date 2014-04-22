@@ -1,0 +1,27 @@
+= form_for(@order) do |f|
+  - if @order.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@order.errors.count, "error")
+        |  prohibited this order from being saved:
+      ul
+        - @order.errors.full_messages.each do |msg|
+          li= msg
+
+  = f.fields_for :seo_meta do |seo_form|
+    .field
+      = seo_form.label 'SEO keywords: '
+      = seo_form.text_field :keywords
+    .field
+      = seo_form.label 'SEO description: '
+      = seo_form.text_field :description
+  .field
+    = f.label :email
+    br
+    = f.text_field :email
+  .field
+    = f.label :description
+    br
+    = f.text_area :description
+  .actions
+    = f.submit

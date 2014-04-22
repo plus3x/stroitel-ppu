@@ -1,0 +1,32 @@
+h1
+  | Listing services
+table
+  thead
+    tr
+      th
+        | Name
+      th
+        | Title
+      th
+        | Description
+      th
+        | Picture url
+      th
+      th
+      th
+  tbody
+    - @services.each do |service|
+      tr
+        td= service.name
+        td= service.title
+        td= service.description
+        td= service.picture_url
+        - if current_user.manager? or current_user.admin?
+          td= link_to 'Show', service
+          td= link_to 'Edit', edit_service_path(service)
+          td= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+
+- if current_user.manager? or current_user.admin?
+  = link_to 'New Service', new_service_path

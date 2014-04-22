@@ -1,0 +1,14 @@
+p#notice= notice
+
+p
+  strong
+    | Email:
+  = @order.email
+p
+  strong
+    | Description:
+  = @order.description
+
+= link_to 'Edit', edit_order_path(@order)
+|  | 
+= link_to 'Back', orders_path

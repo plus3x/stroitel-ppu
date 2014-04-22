@@ -1,0 +1,11 @@
+p#notice= notice
+
+.path= link_to @debtor.title, ''
+
+h2
+  = @debtor.title
+
+=raw @debtor.content
+
+- if current_user.manager? or current_user.admin?
+  = link_to 'Редактировать', edit_debtor_path(@debtor)

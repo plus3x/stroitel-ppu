@@ -1,0 +1,32 @@
+h1
+  | Listing type_of_products
+table
+  thead
+    tr
+      th
+        | Name
+      th
+        | Title
+      th
+        | Description
+      th
+        | Picture url
+      th
+      th
+      th
+  tbody
+    - @type_of_products.each do |type_of_product|
+      tr
+        td= type_of_product.name
+        td= type_of_product.title
+        td= type_of_product.description
+        td= type_of_product.picture_url
+        - if current_user.manager? or current_user.admin?
+          td= link_to 'Show', [@service, type_of_product]
+          td= link_to 'Edit', edit_service_type_of_product_path(@service, type_of_product)
+          td= link_to 'Destroy', [@service, type_of_product], method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+
+- if current_user.manager? or current_user.admin?
+  = link_to 'New Type of product', new_service_type_of_product_path(@service)

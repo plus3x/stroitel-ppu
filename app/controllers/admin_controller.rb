@@ -3,6 +3,6 @@ class AdminController < ApplicationController
 
   # GET /admin
   def index
-    fresh_when [File.mtime('app/views/admin/index.html.erb'), current_user]
+    fresh_when [File.mtime('app/views/admin/index.html.slim'), current_user]
   end
 end

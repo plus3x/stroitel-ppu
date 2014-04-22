@@ -1,0 +1,17 @@
+p#notice= notice
+
+.path
+  = link_to @service.name, @service
+  = link_to @type_of_product.name, ''
+
+=raw @type_of_product.description
+
+#product
+  - cache @products do
+    = render @products
+
+- if current_user.manager? or current_user.admin?
+  = link_to 'New product', new_service_type_of_product_product_path(@service, @type_of_product)
+  = link_to 'Edit', edit_service_type_of_product_path(@service, @type_of_product)
+  |  | 
+  = link_to 'Back', service_type_of_products_path(@service)
