@@ -6,21 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Role.destroy_all
-roles = Role.create([ 
-  {id: 1, title: "admin"},
-  {id: 2, title: "manager"}
-])
-if roles[0].save and roles[1].save
-  puts "Default roles: " + roles.map(&:title).join(', ')
-else
-  puts '>>> Roles not created!'
-end
-
 User.destroy_all
 users = User.create([
-  { id: 1, role_id: 1, name: 'admin',   password: 'PasswordAdmina',   password_confirmation: 'PasswordAdmina'   },
-  { id: 2, role_id: 2, name: 'manager', password: 'PasswordManagera', password_confirmation: 'PasswordManagera' }
+  { id: 1,
+  	role: 'Role::Admin',
+  	name: 'admin',
+  	password: 'PasswordAdmina',
+  	password_confirmation: 'PasswordAdmina' },
+  { id: 2,
+  	role: 'Role::Manager',
+  	name: 'manager',
+  	password: 'PasswordManagera',
+  	password_confirmation: 'PasswordManagera' }
 ])
 if users[0].save and users[1].save
   puts "Default users: " + users.map(&:name).join(', ')

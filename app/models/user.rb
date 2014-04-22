@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  has_secure_password
-
   self.inheritance_column = 'role'
   def self.model_name
     ActiveModel::Name.new(User)
@@ -11,6 +9,8 @@ class User < ActiveRecord::Base
     manager: 'Role::Manager',
     guest:   'Role::Guest'
   }
+
+  has_secure_password
 
   validates_presence_of :name, :role
 

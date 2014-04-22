@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
-	<div class='path'>
-	  <%= link_to @debtor.title, '' %>
-	</div>
+
+<div class='path'>
+  <%= link_to @debtor.title, '' %>
+</div>
+
 <h2>
   <%= @debtor.title %>
 </h2>
 
-  <%=raw @debtor.content %>
-	<% if current_user %>
-	  <% if current_user.manager? or current_user.admin? %>
-      <%= link_to 'Редактировать', edit_debtor_path(@debtor) %>
-    <% end %>
-  <% end %>
-      
+<%=raw @debtor.content %>
+
+<% if current_user.manager? or current_user.admin? %>
+  <%= link_to 'Редактировать', edit_debtor_path(@debtor) %>
+<% end %>

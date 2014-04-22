@@ -15,7 +15,7 @@
   <div id="top">
     <%= image_tag("glass_logo.png") %>
     <div id="login">
-      <% if current_user %>
+      <% if current_user.admin? or current_user.manager? %>
         You may <%= link_to t('sign_out'), logout_url, method: :delete %> here.<br/>
         <%= "Hello #{current_user.name}" %>
       <% end %>
@@ -28,14 +28,12 @@
       </ul>
       <ul class='right'>  
         <li><%= link_to_unless_current t('.about_page'),            about_path %></li>
-        <li><%= link_to_unless_current t('.new_debtor'),         debtor_path(@debtor) %></li>
-        <% if current_user %>
-          <% if current_user.admin? %>
+        <li><%= link_to_unless_current t('.new_debtor'),  debtor_path(@debtor) rescue nil %></li>
+        <% if current_user.admin? %>
             <li><%= link_to_unless_current t('.users_page'),  users_path %></li>
-          <% end %>
-          <% if current_user.manager? or current_user.admin? %>
+        <% end %>
+        <% if current_user.manager? or current_user.admin? %>
             <li><%= link_to_unless_current t('.orders'),  orders_path %></li>
-          <% end %>
         <% end %>
       </ul>
     </div>

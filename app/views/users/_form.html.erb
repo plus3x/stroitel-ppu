@@ -26,7 +26,7 @@
       </div>
       <div class="field">
         <%= f.label :role %>
-        <%= f.collection_select :role_id, Role.all, :id, :title %>
+        <%= f.collection_select :role_id, User.roles, :last, :first %>
       </div>
       <div class="actions">
         <%= f.submit %>

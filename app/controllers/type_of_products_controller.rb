@@ -23,8 +23,7 @@ class TypeOfProductsController < ApplicationController
 
   # GET /services/:service_id/type_of_products/new
   def new
-    @type_of_product = TypeOfProduct.new
-    @type_of_product.seo_meta = SeoMeta.new
+    @type_of_product = TypeOfProduct.new seo_meta: SeoMeta.new
     @service = Service.find(params[:service_id])
   end
 
@@ -38,9 +37,8 @@ class TypeOfProductsController < ApplicationController
     @type_of_product = TypeOfProduct.new(type_of_product_params)
     @service = Service.find(params[:service_id])
     @type_of_product.service = @service
-    @type_of_product_seo_meta = SeoMeta.new(type_of_product_params[:seo_meta_attributes])
     respond_to do |format|
-      if @type_of_product.save and @type_of_product_seo_meta.save
+      if @type_of_product.save
         format.html { redirect_to [@service, @type_of_product], notice: 'Type of product was successfully created.' }
       else
         format.html { render action: 'new' }
@@ -52,7 +50,7 @@ class TypeOfProductsController < ApplicationController
   def update
     @service = Service.find(params[:service_id])
     respond_to do |format|
-      if @type_of_product.update(type_of_product_params) and @type_of_product.seo_meta.update(type_of_product_params[:seo_meta_attributes])
+      if @type_of_product.update(type_of_product_params)
         format.html { redirect_to [@service, @type_of_product], notice: 'Type of product was successfully updated.' }
       else
         format.html { render action: 'edit' }
@@ -62,7 +60,6 @@ class TypeOfProductsController < ApplicationController
 
   # DELETE /services/:service_id/type_of_products/1
   def destroy
-    @type_of_product.seo_meta.destroy
     @type_of_product.destroy
     respond_to do |format|
       format.html { redirect_to service_url }

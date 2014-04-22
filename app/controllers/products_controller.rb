@@ -24,8 +24,7 @@ class ProductsController < ApplicationController
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/new
   def new
-    @product = Product.new
-    @product.seo_meta = SeoMeta.new
+    @product = Product.new seo_meta: SeoMeta.new
     @service = Service.find(params[:service_id])
     @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
@@ -39,16 +38,14 @@ class ProductsController < ApplicationController
   # POST /services/:service_id/type_of_products/:type_of_product_id/products
   def create
     @product = Product.new(product_params)
-    @product_seo_meta = SeoMeta.new(product_params[:seo_meta_attributes])
     @service = Service.find(params[:service_id])
     @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
     @product.type_of_product = @type_of_product
     @product.type_of_product.service = @service
     respond_to do |format|
-      if @product.save and @product_seo_meta.save
+      if @product.save
         format.html {
-          redirect_to [@service, @type_of_product, @product], 
-          notice: 'Product was successfully created.'
+          redirect_to [@service, @type_of_product, @product], notice: 'Product was successfully created.'
         }
       else
         format.html { render action: 'new' }
@@ -61,7 +58,7 @@ class ProductsController < ApplicationController
     @service = Service.find(params[:service_id])
     @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
     respond_to do |format|
-      if @product.update(product_params) and @product.seo_meta.update(product_params[:seo_meta_attributes])
+      if @product.update(product_params)
         format.html { redirect_to [@service, @type_of_product, @product], notice: 'Product was successfully updated.' }
       else
         format.html { render action: 'edit' }
@@ -71,7 +68,6 @@ class ProductsController < ApplicationController
 
   # DELETE /services/:service_id/type_of_products/:type_of_product_id/products/1
   def destroy
-    @product.seo_meta.destroy
     @product.destroy
     respond_to do |format|
       format.html { redirect_to service_type_of_products_url }
