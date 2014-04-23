@@ -17,15 +17,10 @@ html
 
     #top
       = image_tag('glass_logo.png')
-      #login
-        - if current_user.admin? or current_user.manager?
-          |  You may 
-          = link_to t('sign_out'), logout_url, method: :delete
-          |  here.
-          br
-          = "Hello #{current_user.name}"
       #side
         ul.left
+          - if current_user.admin? or current_user.manager?
+            li= link_to t('sign_out'), logout_url, method: :delete
           li= link_to_unless_current t('.contacts_page'),      contacts_path
           li= link_to_unless_current t('.production_page'),  production_path
         ul.right

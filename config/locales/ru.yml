@@ -29,7 +29,7 @@ ru:
   edit: Отредактировать
   destroy: Удалить
   back: Назад
-  sign_out: Выйти
+  sign_out: покинуть систему
   layouts:
     application:
       title: Строитель ППУ
