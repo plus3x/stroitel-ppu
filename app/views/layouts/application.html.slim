@@ -25,7 +25,7 @@ html
           li= link_to_unless_current t('.production_page'),  production_path
         ul.right
           li= link_to_unless_current t('.about_page'),            about_path
-          li= link_to_unless_current t('.new_debtor'),  debtor_path(@debtor) rescue nil
+          li= link_to_unless_current t('.debtors'),             debtors_path
           - if current_user.admin?
             li= link_to_unless_current t('.users_page'),  users_path
           - if current_user.manager? or current_user.admin?

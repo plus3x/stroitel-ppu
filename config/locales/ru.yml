@@ -32,13 +32,11 @@ ru:
   sign_out: покинуть систему
   layouts:
     application:
-      title: Строитель ППУ
       main_page: Главная
       contacts_page: Контакты
       production_page: Производство
       about_page: О компании
-      new_order: Оставить заявку
-      new_debtor: Должники
+      debtors: Должники
       new_service: Новый сервис
       users_page: Пользователи
       orders: Заказы
@@ -97,6 +95,16 @@ ru:
       page_title: 'ПСФ Строитель / Продукция / %{title}'
       meta_keywords: '%{keywords}'
       meta_description: '%{description}'
+  debtors:
+    index:
+      debtors: Должники
+      new_debtor: Новый должник
+      page_title: ПСФ Строитель / Должники
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+    show:
+      debtors: Должники
+      page_title: 'ПСФ Строитель / Продукция / %{title}'
 
   # Mail #
   user_notifier:

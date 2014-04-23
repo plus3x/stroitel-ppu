@@ -1,24 +1,23 @@
-h1
-  | Listing debtors
-table
-  thead
-    tr
-      th
-        | Title
-      th
-        | Content
-      th
-      th
-      th
-  tbody
-    - @debtors.each do |debtor|
-      tr
-        td= debtor.title
-        td= debtor.content
-        td= link_to 'Show', debtor
-        td= link_to 'Edit', edit_debtor_path(debtor)
-        td= link_to 'Destroy', debtor, method: :delete, data: { confirm: 'Are you sure?' }
+- provide :page_title,       t('.page_title')
+- provide :meta_keywords,    t('.meta_keywords')
+- provide :meta_description, t('.meta_description')
 
+.path
+  = link_to t('.debtors'), debtors_path
+
+h2
+  = t('.debtors')
+
+- cache @debtors do
+  - @debtors.each do |debtor|
+    =raw @debtor.content
+
+    - if current_user.manager? or current_user.admin?
+      = link_to t('show'), debtor
+      | |
+      = link_to t('edit'), edit_debtor_path(debtor)
+      | |
+      = link_to t('destroy'), debtor, method: :delete, data: { confirm: 'Are you sure?' }
 br
-
-= link_to 'New Debtor', new_debtor_path
+- if current_user.manager? or current_user.admin?
+  = link_to t('.new_debtor'), new_debtor_path

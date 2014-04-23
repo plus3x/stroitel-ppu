@@ -1,11 +1,16 @@
-p#notice= notice
+- provide :page_title, t('.page_title', title: @debtor.title)
 
-.path= link_to @debtor.title, ''
+.boby
+  .path
+  	= link_to t('.debtors'), debtors_path
+  	= link_to @debtor.title, ''
 
-h2
-  = @debtor.title
+  =raw @debtor.content
 
-=raw @debtor.content
-
-- if current_user.manager? or current_user.admin?
-  = link_to 'Редактировать', edit_debtor_path(@debtor)
+  - if current_user.manager? or current_user.admin?
+    h4
+      | Действия над должником: 
+      .action
+        = link_to t('edit'), edit_debtor_path(@debtor)
+        | |
+        = link_to t('destroy'), @debtor, method: :delete, data: { confirm: 'Are you sure?' }
