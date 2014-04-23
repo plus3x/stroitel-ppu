@@ -3,70 +3,71 @@ html
   head
     title
       = @head_title || t('.default_head_title')
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = favicon_link_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true, async: true
+    = javascript_include_tag 'application',               'data-turbolinks-track' => true, async: true
     = csrf_meta_tags
-    = tag 'meta', name: 'robots',    content: 'all'
-    = tag 'meta', name: 'yandex',    content: 'all'
-    = tag 'meta', name: 'googlebot', content: 'all'
+    meta content="text/html; charset=utf-8" http-equiv="Content-Type"
+    meta name='robots'    content='all'
+    meta name='googlebot' content='all'
+    meta name='yandex'    content='all'
     = tag 'meta', name: 'Keywords',    content: (@meta_keywords    || t('.default_meta_keywords'))
     = tag 'meta', name: 'Description', content: (@meta_description || t('.default_meta_description'))
-  |  <body id="
-  = controller.controller_name
-  | "> 
-  #top
-    = image_tag("glass_logo.png")
-    #login
-      - if current_user.admin? or current_user.manager?
-        |  You may 
-        = link_to t('sign_out'), logout_url, method: :delete
-        |  here.
-        br
-        = "Hello #{current_user.name}"
-    #side
-      ul.left
-        li= link_to_unless_current t('.contacts_page'),      contacts_path
-        li= link_to_unless_current t('.production_page'),  production_path
-      ul.right
-        li= link_to_unless_current t('.about_page'),            about_path
-        li= link_to_unless_current t('.new_debtor'),  debtor_path(@debtor) rescue nil
-        - if current_user.admin?
-          li= link_to_unless_current t('.users_page'),  users_path
-        - if current_user.manager? or current_user.admin?
-          li= link_to_unless_current t('.orders'),  orders_path
-
-  #content
-
-    #banner= image_tag("headbox2.png")
-
-    .clear
-
-    #main
-      - cache Service.all do
-        ul#services
-          = render Service.all
+  
+  body id=(controller.controller_name)
+    #top
+      = image_tag("glass_logo.png")
+      #login
+        - if current_user.admin? or current_user.manager?
+          |  You may 
+          = link_to t('sign_out'), logout_url, method: :delete
+          |  here.
+          br
+          = "Hello #{current_user.name}"
+      #side
+        ul.left
+          li= link_to_unless_current t('.contacts_page'),      contacts_path
+          li= link_to_unless_current t('.production_page'),  production_path
+        ul.right
+          li= link_to_unless_current t('.about_page'),            about_path
+          li= link_to_unless_current t('.new_debtor'),  debtor_path(@debtor) rescue nil
+          - if current_user.admin?
+            li= link_to_unless_current t('.users_page'),  users_path
           - if current_user.manager? or current_user.admin?
-            li= link_to t('.new_service'), new_service_path
+            li= link_to_unless_current t('.orders'),  orders_path
 
-      #long-content
+    #content
 
-        = yield
+      #banner= image_tag("headbox2.png")
 
-      #bottom_banner= image_tag("bottom-banner.png")
+      .clear
 
-  #footer
-    #logo-small= image_tag("logo-small.png")
-    #address
-      |  195220, г. Санкт-Петербург, пр. Науки, дом 19, корпус 2, подъезд 11, 4 этаж 
-    #contacts
-      |  Телефоны/Факс: 8 (812) 
-      strong
-        | 536-22-15
-      | , 8 (812) 
-      strong
-        | 536-22-17
-      br
-      |  email 
-      = mail_to 'stroitel-ppu@yandex.ru'
+      #main
+        - cache Service.all do
+          ul#services
+            = render Service.all
+            - if current_user.manager? or current_user.admin?
+              li= link_to t('.new_service'), new_service_path
 
-  = render 'yandex_counter'
+        #long-content
+
+          = yield
+
+        #bottom_banner= image_tag("bottom-banner.png")
+
+    #footer
+      #logo-small= image_tag("logo-small.png")
+      #address
+        |  195220, г. Санкт-Петербург, пр. Науки, дом 19, корпус 2, подъезд 11, 4 этаж 
+      #contacts
+        |  Телефоны/Факс: 8 (812) 
+        strong
+          | 536-22-15
+        | , 8 (812) 
+        strong
+          | 536-22-17
+        br
+        |  email 
+        = mail_to 'stroitel-ppu@yandex.ru'
+
+    = render 'yandex_counter'
