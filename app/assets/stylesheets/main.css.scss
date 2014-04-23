@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body#main {
+#main {
   #home {
     float: left;
     padding-left: 15px;
@@ -19,10 +19,9 @@ body#main {
   margin-left: 290px;
   margin-right: 10px;
   //width: 800px;
-  h1 {
-    padding: 30px 10px 15px 10px;
-  }
+  h1 { padding: 30px 10px 15px 10px; }
 }
+
 #bottom_banner{
   margin-left: 0px;
 }
@@ -32,24 +31,22 @@ body#main {
   height: 50px;
   line-height: 50px;
   text-align: center;
-	font-size: 11px;
-  a{
+  font-size: 11px;
+  a {
     display: inline-block;
     line-height: 50px;
     height: 99%;
     padding: 0px 10px;
     background: image_url('pipes.png');
-	 float: left;
-	color: white;
-text-decoration: none;
+    float: left;
+    color: white;
+    text-decoration: none;
   }
-	a:visited{
-color: white;
-}
-a:hover {
-text-decoration: underline;
-    color: white; /* Цвет активных ссылок */
-   }
+  a:visited { color: white; }
+  a:hover {
+    text-decoration: underline;
+    color: white;
+  }
    
   &:after {
     content: '';
@@ -63,84 +60,97 @@ text-decoration: underline;
 }
 
 .table-ppu {
-    font-family: Tahoma, Arial, Helvetica, sans-serif; 
-    font-size: 12px; 
-    color: #000000; 
-    text-align: center; 
-    border-width: 1px; 
-    border-color: #bbbbbb; 
-    border-style: solid;
-	 margin: auto;
-width: 80%;
+  font-family: Tahoma, Arial, Helvetica, sans-serif; 
+  font-size: 12px; 
+  color: #000000; 
+  text-align: center; 
+  border-width: 1px; 
+  border-color: #bbbbbb; 
+  border-style: solid;
+  margin: auto;
+  width: 80%;
 }
+
 .table-line-ppu{
-    line-height: 15px;
+  line-height: 15px;
 }
+
 .table-color-line-ppu{
-    background-color: #e2f1ed; 
-    border-width: 1px;
+  background-color: #e2f1ed; 
+  border-width: 1px;
 }
-.table-ppu th { background: rgb(185, 75, 66); color: #fff; text-align: center; font-size: 13px; }
-.table-ppu td { font-size: 13px; text-align: center; }
-.table-ppu th.line { padding: 2px 0 0 0; }
+
+.table-ppu {
+  th {
+    background: rgb(185, 75, 66);
+    color: #fff;
+    text-align: center;
+    font-size: 13px; }
+  td { font-size: 13px; text-align: center; }
+  th.line { padding: 2px 0 0 0; }
+}
+
 .odd, .odd td { background: #D6DAE0; }
+
 .even, .even td { background: none; }
+
 #truba_1 {
-        width: 419px;
-        height: 239px;
-        position: absolute;
-        left: 1%;
-        background: url(/images/truba_1.png) left top no-repeat;
-    z-index: 100;
+  width: 419px;
+  height: 239px;
+  position: absolute;
+  left: 1%;
+  background: url(/images/truba_1.png) left top no-repeat;
+  z-index: 100;
 }
- #truba_2 {
- width: 380px;
-        height: 226px;
-        position: absolute;
-        left: 13%;
-        top: 10px;
-        
- background: url(/images/truba_2.png) left top no-repeat;
-    z-index: 100;
+
+#truba_2 {
+  width: 380px;
+  height: 226px;
+  position: absolute;
+  left: 13%;
+  top: 10px;    
+  background: url(/images/truba_2.png) left top no-repeat;
+  z-index: 100;
 }
+
 #truba_3 {
-width: 352px;
-        height: 219px;
-        position: absolute;
-        left: 27%;
-        top: 8px;
-        
-background: url(/images/truba_3.png) left top no-repeat;
-    z-index: 100;
+  width: 352px;
+  height: 219px;
+  position: absolute;
+  left: 27%;
+  top: 8px;
+  background: url(/images/truba_3.png) left top no-repeat;
+  z-index: 100;
 }
 
 #truba_4 {
-width: 362px;
-        height: 233px;
-        position: absolute;
-        left: 49%;
-        background: url(/images/truba_4.png) left top no-repeat;
-    z-index: 100;
+  width: 362px;
+  height: 233px;
+  position: absolute;
+  left: 49%;
+  background: url(/images/truba_4.png) left top no-repeat;
+  z-index: 100;
 }
 
 #truba_5 {
-width: 280px;
-        height: 208px;
-        position: absolute;
-        left: 70%;
-        top: 10px;
-        background: url(/images/truba_5.png) left top no-repeat;
-    z-index: 100;
-    overflow:hidden;
+  width: 280px;
+  height: 208px;
+  position: absolute;
+  left: 70%;
+  top: 10px;
+  background: url(/images/truba_5.png) left top no-repeat;
+  z-index: 100;
+  overflow:hidden;
 }
+
 #header_trubs {
-    height: 240px;
-    left: 10%;
-    top: 130px;
-    position: absolute;
-    min-width: 800px;
-    max-width: 1250px;
-    z-index: 100;
-    overflow: hidden;
-    width: 80%;
+  height: 240px;
+  left: 10%;
+  top: 130px;
+  position: absolute;
+  min-width: 800px;
+  max-width: 1250px;
+  z-index: 100;
+  overflow: hidden;
+  width: 80%;
 }
