@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product,         only: [:show, :edit, :update, :destroy]
+  before_action :set_service,         except: :destroy
+  before_action :set_type_of_product, except: :destroy
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products
   def index
@@ -8,8 +10,6 @@ class ProductsController < ApplicationController
     @head_title       = I18n.t('.products.index.head_title')
     @meta_keywords    = I18n.t('.products.index.meta_keywords')
     @meta_description = I18n.t('.products.index.meta_description')
-    @service = Service.find(params[:service_id])
-    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/1
@@ -18,28 +18,20 @@ class ProductsController < ApplicationController
     @head_title       = I18n.t('.products.show.head_title',             title: @product.name)
     @meta_keywords    = I18n.t('.products.show.meta_keywords',       keywords: @product.seo_meta.keywords)
     @meta_description = I18n.t('.products.show.meta_description', description: @product.seo_meta.description)
-    @service = Service.find(params[:service_id])
-    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/new
   def new
     @product = Product.new seo_meta: SeoMeta.new
-    @service = Service.find(params[:service_id])
-    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/1/edit
   def edit
-    @service = Service.find(params[:service_id])
-    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
   end
 
   # POST /services/:service_id/type_of_products/:type_of_product_id/products
   def create
     @product = Product.new(product_params)
-    @service = Service.find(params[:service_id])
-    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
     @product.type_of_product = @type_of_product
     @product.type_of_product.service = @service
     respond_to do |format|
@@ -55,8 +47,6 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /services/:service_id/type_of_products/:type_of_product_id/products/1
   def update
-    @service = Service.find(params[:service_id])
-    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to [@service, @type_of_product, @product], notice: 'Product was successfully updated.' }
@@ -75,8 +65,17 @@ class ProductsController < ApplicationController
   end
 
   private
+
     def set_product
       @product = Product.find(params[:id])
+    end
+
+    def set_service
+      @service = Service.find(params[:service_id])
+    end
+
+    def set_type_of_product
+      @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
     end
 
     def product_params

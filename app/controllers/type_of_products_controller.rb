@@ -1,5 +1,6 @@
 class TypeOfProductsController < ApplicationController
   before_action :set_type_of_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_service,         except: :destroy
 
   # GET /services/:service_id/type_of_products
   def index
@@ -8,7 +9,6 @@ class TypeOfProductsController < ApplicationController
     @head_title       = I18n.t('.type_of_products.index.head_title')
     @meta_keywords    = I18n.t('.type_of_products.index.meta_keywords')
     @meta_description = I18n.t('.type_of_products.index.meta_description')
-    @service = Service.find(params[:service_id])
   end
 
   # GET /services/:service_id/type_of_products/1
@@ -18,24 +18,20 @@ class TypeOfProductsController < ApplicationController
     @head_title       = I18n.t('.type_of_products.show.head_title',             title: @type_of_product.name)
     @meta_keywords    = I18n.t('.type_of_products.show.meta_keywords',       keywords: @type_of_product.seo_meta.keywords)
     @meta_description = I18n.t('.type_of_products.show.meta_description', description: @type_of_product.seo_meta.description)
-    @service = Service.find(params[:service_id])
   end
 
   # GET /services/:service_id/type_of_products/new
   def new
     @type_of_product = TypeOfProduct.new seo_meta: SeoMeta.new
-    @service = Service.find(params[:service_id])
   end
 
   # GET /services/:service_id/type_of_products/1/edit
   def edit
-    @service = Service.find(params[:service_id])
   end
 
   # POST /services/:service_id/type_of_products
   def create
     @type_of_product = TypeOfProduct.new(type_of_product_params)
-    @service = Service.find(params[:service_id])
     @type_of_product.service = @service
     respond_to do |format|
       if @type_of_product.save
@@ -48,7 +44,6 @@ class TypeOfProductsController < ApplicationController
 
   # PATCH/PUT /services/:service_id/type_of_products/1
   def update
-    @service = Service.find(params[:service_id])
     respond_to do |format|
       if @type_of_product.update(type_of_product_params)
         format.html { redirect_to [@service, @type_of_product], notice: 'Type of product was successfully updated.' }
@@ -67,8 +62,13 @@ class TypeOfProductsController < ApplicationController
   end
 
   private
+
     def set_type_of_product
       @type_of_product = TypeOfProduct.find(params[:id])
+    end
+
+    def set_service
+      @service = Service.find(params[:service_id])
     end
 
     def type_of_product_params
