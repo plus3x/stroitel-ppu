@@ -1,4 +1,6 @@
-p#notice= notice
+- provide :page_title,       t('.page_title',       title:       @type_of_product.name)
+- provide :meta_keywords,    t('.meta_keywords',    keywords:    @type_of_product.seo_meta.keywords)
+- provide :meta_description, t('.meta_description', description: @type_of_product.seo_meta.description)
 
 .path
   = link_to @service.name, @service
@@ -10,7 +12,7 @@ p#notice= notice
     .action
       = link_to t('edit'), edit_service_type_of_product_path(@service, @type_of_product)
       | |
-      = link_to t('destroy'), service_type_of_product_path(@service, @type_of_product), method: :delete, data: { confirm: 'Are you sure?' }
+      = link_to t('destroy'), [@service, @type_of_product], method: :delete, data: { confirm: 'Are you sure?' }
 
 =raw @type_of_product.description
 

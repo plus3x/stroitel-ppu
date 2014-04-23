@@ -1,3 +1,7 @@
+- provide :page_title,       t('.page_title',       title:       @service.name)
+- provide :meta_keywords,    t('.meta_keywords',    keywords:    @service.seo_meta.keywords)
+- provide :meta_description, t('.meta_description', description: @service.seo_meta.description)
+
 .boby
   p#notice= notice
 
@@ -14,9 +18,8 @@
   =raw @service.description
 
   - cache @service.type_of_products do
-    ul
-      #type_of_products
-        = render @service.type_of_products
+    ul#type_of_products
+      = render @service.type_of_products
 
       - if current_user.manager? or current_user.admin?
         = link_to 'New type of product', new_service_type_of_product_path(@service)

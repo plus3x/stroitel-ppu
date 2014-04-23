@@ -1,4 +1,6 @@
-p#notice= notice
+- provide :page_title,       t('.page_title',       title:       @product.name)
+- provide :meta_keywords,    t('.meta_keywords',    keywords:    @product.seo_meta.keywords)
+- provide :meta_description, t('.meta_description', description: @product.seo_meta.description)
 
 .path
   = link_to @service.name, @service
@@ -9,8 +11,8 @@ p#notice= notice
   h4
     | Действия над продуктом: 
     .action
-      = link_to t('edit'), edit_service_type_of_product_product_path(@service, @type_of_product, @product)
+      = link_to t('edit'), [:edit, @service, @type_of_product, @product]
       | |
-      = link_to t('destroy'), service_type_of_product_product_path(@service, @type_of_product, @product), method: :delete, data: { confirm: 'Are you sure?' }
+      = link_to t('destroy'), [@service, @type_of_product, @product], method: :delete, data: { confirm: 'Are you sure?' }
 
 =raw @product.description

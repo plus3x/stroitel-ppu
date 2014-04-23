@@ -7,17 +7,11 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     fresh_when [@products, current_user], public: true
-    @head_title       = I18n.t('.products.index.head_title')
-    @meta_keywords    = I18n.t('.products.index.meta_keywords')
-    @meta_description = I18n.t('.products.index.meta_description')
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/1
   def show
     fresh_when [@product, current_user], public: true
-    @head_title       = I18n.t('.products.show.head_title',             title: @product.name)
-    @meta_keywords    = I18n.t('.products.show.meta_keywords',       keywords: @product.seo_meta.keywords)
-    @meta_description = I18n.t('.products.show.meta_description', description: @product.seo_meta.description)
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/new

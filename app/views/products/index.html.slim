@@ -1,3 +1,7 @@
+- provide :page_title,       t('.page_title')
+- provide :meta_keywords,    t('.meta_keywords')
+- provide :meta_description, t('.meta_description')
+
 h1
   | Listing products
 table
@@ -23,7 +27,7 @@ table
         td= product.picture_url
         - if current_user.manager? or current_user.admin?
           td= link_to 'Show', [@service, @type_of_product, product]
-          td= link_to 'Edit', edit_service_type_of_product_product_path(@service, @type_of_product, product)
+          td= link_to 'Edit', [:edit, @service, @type_of_product, product]
           td= link_to 'Destroy', [@service, @type_of_product, product], method: :delete, data: { confirm: 'Are you sure?' }
 
 br

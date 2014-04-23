@@ -6,18 +6,12 @@ class TypeOfProductsController < ApplicationController
   def index
     @type_of_products = TypeOfProduct.all
     fresh_when [@type_of_products, current_user], public: true
-    @head_title       = I18n.t('.type_of_products.index.head_title')
-    @meta_keywords    = I18n.t('.type_of_products.index.meta_keywords')
-    @meta_description = I18n.t('.type_of_products.index.meta_description')
   end
 
   # GET /services/:service_id/type_of_products/1
   def show
     @products = @type_of_product.products
     fresh_when [@products, current_user], public: true
-    @head_title       = I18n.t('.type_of_products.show.head_title',             title: @type_of_product.name)
-    @meta_keywords    = I18n.t('.type_of_products.show.meta_keywords',       keywords: @type_of_product.seo_meta.keywords)
-    @meta_description = I18n.t('.type_of_products.show.meta_description', description: @type_of_product.seo_meta.description)
   end
 
   # GET /services/:service_id/type_of_products/new

@@ -1,8 +1,7 @@
 doctype html
 html
   head
-    title
-      = @head_title || t('.default_head_title')
+    title= content_for(:page_title) || t('.default_page_title')
     = favicon_link_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true, async: true
     = javascript_include_tag 'application',               'data-turbolinks-track' => true, async: true
@@ -11,12 +10,13 @@ html
     meta name='robots'    content='all'
     meta name='googlebot' content='all'
     meta name='yandex'    content='all'
-    = tag 'meta', name: 'Keywords',    content: (@meta_keywords    || t('.default_meta_keywords'))
-    = tag 'meta', name: 'Description', content: (@meta_description || t('.default_meta_description'))
+    = tag 'meta', name: 'Keywords',    content: (content_for(:meta_keywords)    || t('.default_meta_keywords')   )
+    = tag 'meta', name: 'Description', content: (content_for(:meta_description) || t('.default_meta_description'))
   
   body id=(controller.controller_name)
+
     #top
-      = image_tag("glass_logo.png")
+      = image_tag('glass_logo.png')
       #login
         - if current_user.admin? or current_user.manager?
           |  You may 
@@ -38,7 +38,7 @@ html
 
     #content
 
-      #banner= image_tag("headbox2.png")
+      #banner= image_tag('headbox2.png')
 
       .clear
 
@@ -51,12 +51,15 @@ html
 
         #long-content
 
+          - [:notice, :alert, :error].each do |key|
+            = content_tag( :p, flash[key], id: key ) if flash[key]
+
           = yield
 
-        #bottom_banner= image_tag("bottom-banner.png")
+        #bottom_banner= image_tag('bottom-banner.png')
 
     #footer
-      #logo-small= image_tag("logo-small.png")
+      #logo-small= image_tag('logo-small.png')
       #address
         |  195220, г. Санкт-Петербург, пр. Науки, дом 19, корпус 2, подъезд 11, 4 этаж 
       #contacts
