@@ -3,4 +3,9 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-StroitelPpu::Application.load_tasks
+Rails.application.load_tasks
+
+task :look_into_spec_folder do
+  ENV['SOURCE_ANNOTATION_DIRECTORIES'] = 'spec'
+end
+Rake::Task['notes'].enhance [:look_into_spec_folder]
