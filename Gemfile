@@ -23,6 +23,8 @@ group :production, :development do
 end
 
 group :development do
+  gem 'spring'
+  # gem 'spring-commands-rspec'
   # gem 'guard-rspec', require: false
 end
 
