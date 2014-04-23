@@ -29,6 +29,7 @@ ru:
   edit: Отредактировать
   destroy: Удалить
   back: Назад
+  sign_out: Выйти
   layouts:
     application:
       title: Строитель ППУ
@@ -38,28 +39,29 @@ ru:
       about_page: О компании
       new_order: Оставить заявку
       new_debtor: Должники
+      new_service: Новый сервис
       users_page: Пользователи
       orders: Заказы
       default_page_title: ПСФ Строитель
       default_meta_keywords: 'Трубы, изделия, полиуретан, разного диаметра, укладка труб'
       default_meta_description: ПСФ Строитель - изготовим трубу на любой вкус
-  main:
-    index:
+  sessions:
+    new:
+      please_log_in: Пожалуйста пройдите аутентификацию
+  static_pages:
+    main:
       page_title: ПСФ Строитель / Главная
       meta_keywords: 'Трубы, и ещё немного труб'
       meta_description: 'ПСФ Строитель - изготовим трубу на любой вкус'
-  contacts:
-    index:
+    contacts:
       page_title: ПСФ Строитель / Контакты
       meta_keywords: 'Трубы, и ещё немного труб'
       meta_description: ПСФ Строитель - изготовим трубу на любой вкус
-  production:
-    index:
+    production:
       page_title: ПСФ Строитель / Производство
       meta_keywords: 'Трубы, и ещё немного труб'
       meta_description: ПСФ Строитель - изготовим трубу на любой вкус
-  about:
-    index:
+    about:
       page_title: ПСФ Строитель / О компании
       meta_keywords: 'Трубы, и ещё немного труб'
       meta_description: ПСФ Строитель - изготовим трубу на любой вкус
