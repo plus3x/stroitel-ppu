@@ -14,7 +14,6 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @services = Service.all
     fresh_when [@services, current_user], public: true
     @order = Order.new
   end
@@ -28,7 +27,7 @@ class OrdersController < ApplicationController
     if ( @order = Order.new(order_params) ).save
       redirect_to @order, notice: 'Order was successfully created.'
     else
-      render action: 'new'
+      render action: :new
     end
   end
 
@@ -37,7 +36,7 @@ class OrdersController < ApplicationController
     if @order.update order_params
       redirect_to @order, notice: 'Order was successfully updated.'
     else
-      render action: 'edit'
+      render action: :edit
     end
   end
 
