@@ -6,12 +6,10 @@ class ProductsController < ApplicationController
   # GET /services/:service_id/type_of_products/:type_of_product_id/products
   def index
     @products = Product.all
-    fresh_when [@products, current_user], public: true
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/1
   def show
-    fresh_when [@product, current_user], public: true
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/new
@@ -25,37 +23,26 @@ class ProductsController < ApplicationController
 
   # POST /services/:service_id/type_of_products/:type_of_product_id/products
   def create
-    @product = Product.new(product_params)
-    @product.type_of_product = @type_of_product
-    @product.type_of_product.service = @service
-    respond_to do |format|
-      if @product.save
-        format.html {
-          redirect_to [@service, @type_of_product, @product], notice: 'Product was successfully created.'
-        }
-      else
-        format.html { render action: 'new' }
-      end
+    if ( @product = Product.new(product_params) ).save
+      redirect_to [@service, @type_of_product, @product], notice: 'Product was successfully created.'
+    else
+      render action: :new
     end
   end
 
   # PATCH/PUT /services/:service_id/type_of_products/:type_of_product_id/products/1
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to [@service, @type_of_product, @product], notice: 'Product was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @product.update product_params
+      redirect_to [@service, @type_of_product, @product], notice: 'Product was successfully updated.'
+    else
+      render action: :edit
     end
   end
 
   # DELETE /services/:service_id/type_of_products/:type_of_product_id/products/1
   def destroy
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to service_type_of_products_url }
-    end
+    redirect_to service_type_of_products_url
   end
 
   private
@@ -73,6 +60,9 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :title, :description, :picture_url, seo_meta_attributes: [:keywords, :description])
+      params.require(:product).permit(
+        :name, :title, :description, :picture_url,
+        seo_meta_attributes: [:keywords, :description]
+      ).merge type_of_product_id: params[:type_of_product_id]
     end
 end

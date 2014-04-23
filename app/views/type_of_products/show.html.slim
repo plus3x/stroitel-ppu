@@ -17,8 +17,8 @@
 =raw @type_of_product.description
 
 #product
-  - cache @products do
-    = render @products
+  - cache @type_of_product.products do
+    = render @type_of_product.products
 
     - if current_user.manager? or current_user.admin?
       = link_to 'New product', new_service_type_of_product_product_path(@service, @type_of_product)

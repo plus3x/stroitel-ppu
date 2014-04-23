@@ -4,13 +4,10 @@ class ServicesController < ApplicationController
   # GET /services
   def index
     @services = Service.all
-    fresh_when [@services, current_user], public: true
   end
 
   # GET /services/1
   def show
-    @type_of_products = @service.type_of_products
-    fresh_when [@service, @type_of_products, current_user], public: true
   end
 
   # GET /services/new
@@ -24,34 +21,26 @@ class ServicesController < ApplicationController
 
   # POST /services
   def create
-    @service = Service.new(service_params)
-    @service_seo_meta = SeoMeta.new(service_params[:seo_meta_attributes])
-    respond_to do |format|
-      if @service.save and @service_seo_meta.save
-        format.html { redirect_to @service, notice: 'Service was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
+    if ( @service = Service.new(service_params) ).save
+      redirect_to @service, notice: 'Service was successfully created.'
+    else
+      render action: :new
     end
   end
 
   # PATCH/PUT /services/1
   def update
-    respond_to do |format|
-      if @service.update service_params
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
+    if @service.update service_params
+      redirect_to @service, notice: 'Service was successfully updated.'
+    else
+      render action: :edit
     end
   end
 
   # DELETE /services/1
   def destroy
     @service.destroy
-    respond_to do |format|
-      format.html { redirect_to services_url }
-    end
+    redirect_to services_url
   end
 
   private
