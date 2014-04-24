@@ -25,7 +25,7 @@ class TypeOfProductsController < ApplicationController
     if ( @type_of_product = TypeOfProduct.new(type_of_product_params) ).save
       redirect_to [@service, @type_of_product], notice: 'Type of product was successfully created.'
     else
-      render action: :new
+      render :new
     end
   end
 
@@ -34,7 +34,7 @@ class TypeOfProductsController < ApplicationController
     if @type_of_product.update type_of_product_params
       redirect_to [@service, @type_of_product], notice: 'Type of product was successfully updated.'
     else
-      render action: :edit
+      render :edit
     end
   end
 

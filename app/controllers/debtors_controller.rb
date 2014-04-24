@@ -25,7 +25,7 @@ class DebtorsController < ApplicationController
     if ( @debtor = Debtor.new(debtor_params) ).save
       redirect_to @debtor, notice: 'Debtor was successfully created.'
     else
-      render action: :new
+      render :new
     end
   end
 
@@ -34,7 +34,7 @@ class DebtorsController < ApplicationController
     if @debtor.update debtor_params
       redirect_to @debtor, notice: 'Debtor was successfully updated.'
     else
-      render action: :edit
+      render :edit
     end
   end
 

@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
     if ( @order = Order.new(order_params) ).save
       redirect_to @order, notice: 'Order was successfully created.'
     else
-      render action: :new
+      render :new
     end
   end
 
@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
     if @order.update order_params
       redirect_to @order, notice: 'Order was successfully updated.'
     else
-      render action: :edit
+      render :edit
     end
   end
 
