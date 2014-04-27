@@ -3,8 +3,6 @@
 - provide :meta_description, t('.meta_description', description: @service.seo_meta.description)
 
 .boby
-  p#notice= notice
-
   .path= link_to @service.name, ''
 
   - if current_user.manager? or current_user.admin?
