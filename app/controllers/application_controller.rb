@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :authorize
   before_action :set_public_proxy_refresh, only: [:show, :index]
   before_action :set_public_fresh_when,    only: [:index, :show]
-  before_action :select_debtors
   
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -32,9 +31,5 @@ class ApplicationController < ActionController::Base
 
     def requested_model
       params[:controller].classify.constantize
-    end
-    
-    def select_debtors
-      @debtor = Debtor.first
     end
 end
