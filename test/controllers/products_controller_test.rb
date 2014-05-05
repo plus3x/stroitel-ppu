@@ -8,19 +8,29 @@ class ProductsControllerTest < ActionController::TestCase
     @seo_meta = seo_meta(:one)
   end
 
-  test "should get index" do
+  test 'should route to products' do
+    assert_routing '/services/1/type_of_products/1/products', { action: 'index', controller: 'products',
+                                                                service_id: '1', type_of_product_id: '1' }
+  end
+
+  test 'should get index' do
     get :index, service_id: @service, type_of_product_id: @type_of_product
     assert_response :success
     assert_not_nil assigns(:products)
   end
 
-  test "should get new" do
+  test 'should route to new product' do
+    assert_routing '/services/1/type_of_products/1/products/new', { action: 'new', controller: 'products',
+                                                                    service_id: '1', type_of_product_id: '1' }
+  end
+
+  test 'should get new' do
     login_as :manager
     get :new, service_id: @service, type_of_product_id: @type_of_product
     assert_response :success
   end
 
-  test "should create product" do
+  test 'should create product' do
     login_as :manager
     assert_difference 'Product.count' do
       post :create, 
@@ -36,18 +46,28 @@ class ProductsControllerTest < ActionController::TestCase
     assert_redirected_to [@service, @type_of_product, assigns(:product)]
   end
 
-  test "should show product" do
+  test 'should route to show product' do
+    assert_routing '/services/1/type_of_products/1/products/1', { action: 'show', controller: 'products', id: '1',
+                                                                  service_id: '1', type_of_product_id: '1' }
+  end
+
+  test 'should show product' do
     get :show, id: @product, service_id: @service, type_of_product_id: @type_of_product
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should route to edit product' do
+    assert_routing '/services/1/type_of_products/1/products/1/edit', { action: 'edit', controller: 'products', id: '1',
+                                                                       service_id: '1', type_of_product_id: '1' }
+  end
+
+  test 'should get edit' do
     login_as :manager
     get :edit, id: @product, service_id: @service, type_of_product_id: @type_of_product
     assert_response :success
   end
 
-  test "should update product" do
+  test 'should update product' do
     login_as :manager
     patch :update, 
       id: @product, 
@@ -62,7 +82,7 @@ class ProductsControllerTest < ActionController::TestCase
     assert_redirected_to [@service, @type_of_product, assigns(:product)]
   end
 
-  test "should destroy product" do
+  test 'should destroy product' do
     login_as :manager
     assert_difference 'Product.count', -1 do
       delete :destroy, 

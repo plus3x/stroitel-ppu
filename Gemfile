@@ -24,20 +24,9 @@ end
 
 group :development do
   gem 'spring'
-  # gem 'spring-commands-rspec'
-  # gem 'guard-rspec', require: false
 end
 
 group :development, :test do
   gem 'sqlite3'
   gem 'pry-rails'
-  # gem 'rspec-rails', '3.0.0.beta2'
-end
-
-group :test do
-  # gem 'factory_girl_rails'
-  # gem 'database_cleaner'
-  # gem 'minitest'
-  # gem 'shoulda-matchers'
-  # gem 'capybara'
 end
