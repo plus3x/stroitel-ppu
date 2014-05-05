@@ -1,0 +1,16 @@
+- cache [current_user.admin?, current_user.manager?] do
+  header
+    = link_to image_tag('glass_logo.png'), main_path
+    #side
+      ul.left
+        - if current_user.admin? or current_user.manager?
+          li= link_to t('sign_out'), logout_url, method: :delete
+        li= link_to_unless_current t('.contacts_page'),      contacts_path
+        li= link_to_unless_current t('.production_page'),  production_path
+      ul.right
+        li= link_to_unless_current t('.about_page'),            about_path
+        li= link_to_unless_current t('.debtors'),             debtors_path
+        - if current_user.admin?
+          li= link_to_unless_current t('.users_page'),  users_path
+        - if current_user.manager? or current_user.admin?
+          li= link_to_unless_current t('.orders'),  orders_path

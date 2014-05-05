@@ -30,19 +30,22 @@ ru:
   destroy: Удалить
   back: Назад
   sign_out: покинуть систему
-  layouts:
-    application:
+  application:
+    header:
       main_page: Главная
       contacts_page: Контакты
       production_page: Производство
       about_page: О компании
       debtors: Должники
-      new_service: Новый сервис
       users_page: Пользователи
       orders: Заказы
-      default_page_title: ПСФ Строитель
+    meta_data:
       default_meta_keywords: 'Трубы, изделия, полиуретан, разного диаметра, укладка труб'
       default_meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+  layouts:
+    application:
+      default_page_title: ПСФ Строитель
+      new_service: Новый сервис
   sessions:
     new:
       please_log_in: Пожалуйста пройдите аутентификацию

@@ -10,7 +10,7 @@ h2
 
 - cache @debtors do
   - @debtors.each do |debtor|
-    =raw @debtor.content
+    =raw debtor.content
 
     - if current_user.manager? or current_user.admin?
       = link_to t('show'), debtor

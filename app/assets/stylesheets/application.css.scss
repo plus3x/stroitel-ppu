@@ -20,7 +20,7 @@ body {
     clear: both;
   }
   
-  #top {
+  header {
     background: image_url('top-menu-grad.png') repeat-x;
     height: 65px;
     img { 
@@ -136,7 +136,7 @@ body {
     background-size: 100%;
     #bottom_banner { text-align: center; }
   }
-  #footer {
+  footer {
     font: small-caps 16px/16px "Times New Roman", serif;
     color: white;
     text-align: center;

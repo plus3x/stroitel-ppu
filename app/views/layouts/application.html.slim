@@ -6,30 +6,11 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true, async: true
     = javascript_include_tag 'application',               'data-turbolinks-track' => true, async: true
     = csrf_meta_tags
-    meta content="text/html; charset=utf-8" http-equiv="Content-Type"
-    meta name='robots'    content='all'
-    meta name='googlebot' content='all'
-    meta name='yandex'    content='all'
-    = tag 'meta', name: 'Keywords',    content: (content_for(:meta_keywords)    || t('.default_meta_keywords')   )
-    = tag 'meta', name: 'Description', content: (content_for(:meta_description) || t('.default_meta_description'))
+    = render 'meta_data'
   
   body id=(controller.controller_name)
 
-    #top
-      = image_tag('glass_logo.png')
-      #side
-        ul.left
-          - if current_user.admin? or current_user.manager?
-            li= link_to t('sign_out'), logout_url, method: :delete
-          li= link_to_unless_current t('.contacts_page'),      contacts_path
-          li= link_to_unless_current t('.production_page'),  production_path
-        ul.right
-          li= link_to_unless_current t('.about_page'),            about_path
-          li= link_to_unless_current t('.debtors'),             debtors_path
-          - if current_user.admin?
-            li= link_to_unless_current t('.users_page'),  users_path
-          - if current_user.manager? or current_user.admin?
-            li= link_to_unless_current t('.orders'),  orders_path
+    = render 'header'
 
     #content
 
@@ -38,7 +19,7 @@ html
       .clear
 
       #main
-        - cache Service.all do
+        - cache [Service.all, current_user.admin?, current_user.manager?] do
           ul#services
             = render Service.all
             - if current_user.manager? or current_user.admin?
@@ -53,19 +34,6 @@ html
 
         #bottom_banner= image_tag('bottom-banner.png')
 
-    #footer
-      #logo-small= image_tag('logo-small.png')
-      #address
-        |  195220, г. Санкт-Петербург, пр. Науки, дом 19, корпус 2, подъезд 11, 4 этаж 
-      #contacts
-        |  Телефоны/Факс: 8 (812) 
-        strong
-          | 536-22-15
-        | , 8 (812) 
-        strong
-          | 536-22-17
-        br
-        |  email 
-        = mail_to 'stroitel-ppu@yandex.ru'
+    = render 'footer'
 
     = render 'yandex_counter'

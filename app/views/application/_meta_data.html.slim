@@ -1,0 +1,6 @@
+meta content="text/html; charset=utf-8" http-equiv="Content-Type"
+meta name='robots'    content='all'
+meta name='googlebot' content='all'
+meta name='yandex'    content='all'
+= tag 'meta', name: 'Keywords',    content: (content_for(:meta_keywords)    || t('.default_meta_keywords')   )
+= tag 'meta', name: 'Description', content: (content_for(:meta_description) || t('.default_meta_description'))
