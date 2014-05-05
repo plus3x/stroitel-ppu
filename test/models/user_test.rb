@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  should have_secure_password
+  should validate_presence_of :name
+  should validate_presence_of :role
+
   test 'new user must have role guest' do
     user = User.new
     assert_equal user.role, 'guest'
