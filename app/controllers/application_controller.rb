@@ -22,10 +22,9 @@ class ApplicationController < ActionController::Base
     end
 
     def set_public_fresh_when
-      if params[:action] == 'index'
-        fresh_when [requested_model.all, current_user], public: true
-      elsif params[:action] == 'show'
-        fresh_when [requested_model.find(params[:id]), current_user], public: true
+      case params[:action]
+      when 'index' then fresh_when [requested_model.all, current_user],               public: true
+      when 'show'  then fresh_when [requested_model.find(params[:id]), current_user], public: true
       end
     end
 
