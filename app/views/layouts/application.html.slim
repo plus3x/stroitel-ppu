@@ -27,8 +27,8 @@ html
 
         #long-content
 
-          - [:notice, :alert, :error].each do |key|
-            = content_tag( :p, flash[key], id: key ) if flash[key]
+        - flash.each do |key, value|
+          = content_tag :p, value, id: key
 
           = yield
 
