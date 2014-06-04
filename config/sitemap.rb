@@ -9,13 +9,14 @@ SitemapGenerator::Sitemap.adapter       = SitemapGenerator::WaveAdapter.new
 SitemapGenerator::Sitemap.ping_search_engines(yandex: 'http://webmaster.yandex.ru/sitemaptest.xml?host=www.stroitel-ppu.ru')
 
 SitemapGenerator::Sitemap.create do
-  add main_path,       lastmod: File.mtime('app/views/main/index.html.erb')
-  add contacts_path,   lastmod: File.mtime('app/views/contacts/index.html.erb')
-  add production_path, lastmod: File.mtime('app/views/production/index.html.erb')
+  add main_path,       lastmod: File.mtime('app/views/static_pages/main.html.slim')
+  add about_path,      lastmod: File.mtime('app/views/static_pages/about.html.slim')
+  add contacts_path,   lastmod: File.mtime('app/views/static_pages/contacts.html.slim')
+  add production_path, lastmod: File.mtime('app/views/static_pages/production.html.slim')
   
-          services_updated_at = [File.mtime('app/views/services/index.html.erb'),               Service.maximum(:updated_at)].max
-  type_of_products_updated_at = [File.mtime('app/views/type_of_products/index.html.erb'), TypeOfProduct.maximum(:updated_at)].max
-          products_updated_at = [File.mtime('app/views/products/index.html.erb'),               Product.maximum(:updated_at)].max
+          services_updated_at = [File.mtime('app/views/services/index.html.slim'),               Service.maximum(:updated_at)].max
+  type_of_products_updated_at = [File.mtime('app/views/type_of_products/index.html.slim'), TypeOfProduct.maximum(:updated_at)].max
+          products_updated_at = [File.mtime('app/views/products/index.html.slim'),               Product.maximum(:updated_at)].max
   
   add services_path, lastmod: services_updated_at, changefreq: :daily,  priority: 0.7
   
