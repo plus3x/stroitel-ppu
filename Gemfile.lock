@@ -146,7 +146,7 @@ DEPENDENCIES
   jquery-rails
   pg
   pry-rails
-  rails (= 4.1.0)
+  rails (~> 4.1.0)
   rails_12factor
   sass-rails (~> 4.0.3)
   shoulda

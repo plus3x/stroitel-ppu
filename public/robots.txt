@@ -6,11 +6,15 @@
 
 Host: www.stroitel-ppu.ru
 
+
+
 User-agent: *
 Allow: /
 Disallow: /login
 Disallow: */new$
 Disallow: */edit$
+Disallow: /katalog/
+Disallow: /company-products/
 Sitemap: http://www.stroitel-ppu.ru/sitemap1.xml.gz
 Sitemap: http://www.stroitel-ppu.ru/sitemap_index.xml.gz
 

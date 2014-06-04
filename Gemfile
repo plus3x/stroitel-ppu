@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.1.2'
 
-gem 'rails', '4.1.0'
+gem 'rails', '~> 4.1.0'
 gem 'bcrypt'
 
 gem 'slim'
@@ -33,4 +33,9 @@ end
 
 group :test do
   gem 'shoulda'
+  # gem 'factory_girl_rails'
+  # gem 'database_cleaner'
+  # gem 'minitest'
+  # gem 'shoulda-matchers'
+  # gem 'capybara'
 end
