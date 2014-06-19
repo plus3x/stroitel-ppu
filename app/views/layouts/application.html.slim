@@ -27,10 +27,10 @@ html
 
         #long-content
 
-        - flash.each do |key, value|
-          = content_tag :p, value, id: key
+          - flash.each do |key, value|
+            = content_tag :p, value, id: key
 
-        = yield
+          = yield
 
         #bottom_banner= image_tag('bottom-banner.png')
 
