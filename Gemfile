@@ -4,9 +4,10 @@ ruby '2.1.2'
 gem 'rails', '~> 4.1'
 gem 'bcrypt'
 
+gem 'slim'
+gem 'dynamic_form'
+
 group :assets do
-  gem 'slim'
-  gem 'dynamic_form'
   gem 'sass-rails',   '~> 4.0.3'
   gem 'coffee-rails', '~> 4.0.0'
 end
