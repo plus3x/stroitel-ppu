@@ -12,17 +12,13 @@ group :assets do
   gem 'coffee-rails', '~> 4.0.0'
 end
 
-group :production do
-  gem 'sitemap_generator'
-  gem 'carrierwave'
-  gem 'rails_12factor'
-  gem 'pg'
-end
-
-group :production, :development do
-  gem 'uglifier', '>= 1.3.0'
-  gem 'turbolinks'
-  gem 'jquery-rails'
+group :test do
+  gem 'shoulda'
+  # gem 'factory_girl_rails'
+  # gem 'database_cleaner'
+  # gem 'minitest'
+  # gem 'shoulda-matchers'
+  # gem 'capybara'
 end
 
 group :development do
@@ -34,11 +30,15 @@ group :development, :test do
   gem 'pry-rails'
 end
 
-group :test do
-  gem 'shoulda'
-  # gem 'factory_girl_rails'
-  # gem 'database_cleaner'
-  # gem 'minitest'
-  # gem 'shoulda-matchers'
-  # gem 'capybara'
+group :production, :development do
+  gem 'uglifier', '>= 1.3.0'
+  gem 'turbolinks'
+  gem 'jquery-rails'
+end
+
+group :production do
+  gem 'sitemap_generator'
+  gem 'fog'
+  gem 'rails_12factor'
+  gem 'pg'
 end
