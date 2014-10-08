@@ -15,37 +15,37 @@ Disallow: */new$
 Disallow: */edit$
 Disallow: /katalog/
 Disallow: /company-products/
-Sitemap: http://www.stroitel-ppu.ru/sitemap1.xml.gz
-Sitemap: http://www.stroitel-ppu.ru/sitemap_index.xml.gz
+Sitemap: http://stroitel-ppu.s3.amazonaws.com/sitemaps/sitemap1.xml.gz
+Sitemap: http://stroitel-ppu.s3.amazonaws.com/sitemaps/sitemap_index.xml.gz
 
 User-agent: Yandex
 Allow: /
 Disallow: /login
 Disallow: */new$
 Disallow: */edit$
-Sitemap: http://www.stroitel-ppu.ru/sitemap1.xml.gz
-Sitemap: http://www.stroitel-ppu.ru/sitemap_index.xml.gz
+Sitemap: http://stroitel-ppu.s3.amazonaws.com/sitemaps/sitemap1.xml.gz
+Sitemap: http://stroitel-ppu.s3.amazonaws.com/sitemaps/sitemap_index.xml.gz
 
 User-agent: googlebot
 Allow: /
 Disallow: /login
 Disallow: */new$
 Disallow: */edit$
-Sitemap: http://www.stroitel-ppu.ru/sitemap1.xml.gz
-Sitemap: http://www.stroitel-ppu.ru/sitemap_index.xml.gz
+Sitemap: http://stroitel-ppu.s3.amazonaws.com/sitemaps/sitemap1.xml.gz
+Sitemap: http://stroitel-ppu.s3.amazonaws.com/sitemaps/sitemap_index.xml.gz
 
 User-agent: StackRambler
 Allow: /
 Disallow: /login
 Disallow: */new$
 Disallow: */edit$
-Sitemap: http://www.stroitel-ppu.ru/sitemap1.xml.gz
-Sitemap: http://www.stroitel-ppu.ru/sitemap_index.xml.gz
+Sitemap: http://stroitel-ppu.s3.amazonaws.com/sitemaps/sitemap1.xml.gz
+Sitemap: http://stroitel-ppu.s3.amazonaws.com/sitemaps/sitemap_index.xml.gz
 
 User-agent: Mail.Ru
 Allow: /
 Disallow: /login
 Disallow: */new$
 Disallow: */edit$
-Sitemap: http://www.stroitel-ppu.ru/sitemap1.xml.gz
-Sitemap: http://www.stroitel-ppu.ru/sitemap_index.xml.gz
+Sitemap: http://stroitel-ppu.s3.amazonaws.com/sitemaps/sitemap1.xml.gz
+Sitemap: http://stroitel-ppu.s3.amazonaws.com/sitemaps/sitemap_index.xml.gz
