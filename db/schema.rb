@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140505202932) do
+ActiveRecord::Schema.define(version: 20141104113530) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "bootsy_image_galleries", force: true do |t|
+    t.integer  "bootsy_resource_id"
+    t.string   "bootsy_resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: true do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "debtors", force: true do |t|
     t.string   "title"
@@ -74,6 +91,6 @@ ActiveRecord::Schema.define(version: 20140505202932) do
     t.string   "role",            default: "Role::Guest"
   end
 
-  add_index "users", ["role"], name: "index_users_on_role"
+  add_index "users", ["role"], name: "index_users_on_role", using: :btree
 
 end

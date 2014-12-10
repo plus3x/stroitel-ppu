@@ -49,6 +49,6 @@ class ServicesController < ApplicationController
     end
 
     def service_params
-      params.require(:service).permit(:name, :title, :description, :picture_url, seo_meta_attributes: [:keywords, :description])
+      params.require(:service).permit(:name, :title, :description, :picture_url, :bootsy_image_gallery_id, seo_meta_attributes: [:keywords, :description])
     end
 end

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+
   root to: 'static_pages#main', as: 'main'
 
   resources :users

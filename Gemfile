@@ -6,6 +6,8 @@ gem 'bcrypt'
 
 gem 'slim'
 gem 'dynamic_form'
+gem 'bootstrap-sass'
+gem 'bootsy'
 
 group :assets do
   gem 'sass-rails',   '~> 4.0.3'
