@@ -46,11 +46,11 @@ class DebtorsController < ApplicationController
 
   private
 
-    def set_debtor
-      @debtor = Debtor.find(params[:id])
-    end
+  def set_debtor
+    @debtor = Debtor.find(params[:id])
+  end
 
-    def debtor_params
-      params.require(:debtor).permit(:title, :content)
-    end
+  def debtor_params
+    params.require(:debtor).permit(:title, :content)
+  end
 end

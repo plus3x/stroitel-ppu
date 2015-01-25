@@ -55,10 +55,10 @@ Bootsy.setup do |config|
   # initializer file, as described in Carrierwave's docs:
   # https://github.com/carrierwaveuploader/carrierwave/blob/master/README.md#using-amazon-s3
   #
-  # config.storage = :file
+  config.storage = Rails.env.production? ? :fog : :file
 
 
   # Store directory (inside 'public') for storage = :file
   # BE CAREFUL! Changing this may break previously uploaded file paths!
-  # config.store_dir = 'uploads'
+  config.store_dir = 'uploads'
 end

@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
 
   private
 
-    def can_do?(args={})
-      not (args[:controllers] & [@controller.to_sym]).empty? and
-      (not (   args[:actions] & [@action.to_sym]    ).empty? rescue true)
-    end
+  def can_do?(args={})
+    not (args[:controllers] & [@controller.to_sym]).empty? and
+    (not (   args[:actions] & [@action.to_sym]    ).empty? rescue true)
+  end
 end

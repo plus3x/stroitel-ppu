@@ -22,9 +22,9 @@ class SessionsController < ApplicationController
 
   private
 
-    def sessions_is_authenticated?
-      user = User.find_by(name: params[:name])
-      return false unless user and user.authenticate(params[:password])
-      session[:user_id] = user.id
-    end
+  def sessions_is_authenticated?
+    user = User.find_by(name: params[:name])
+    return false unless user and user.authenticate(params[:password])
+    session[:user_id] = user.id
+  end
 end

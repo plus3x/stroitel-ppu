@@ -1,0 +1,19 @@
+ru:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Ошибка валидации: %{errors}"
+        blank: не может быть пустым
+        models:
+      template:
+        header:
+          one:   "Одна ошибка в форме %{model}"
+          other: "Ошибок найдено %{count} в форме %{model}"
+        body: "Ошибки в следующих полях:"
+    models:
+      user: Пользователь
+      users: Пользователи
+    attributes:
+      seo:
+        keywords: Ключевые слова
+        description: Описание для SEO

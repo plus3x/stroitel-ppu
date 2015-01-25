@@ -46,18 +46,18 @@ class TypeOfProductsController < ApplicationController
 
   private
 
-    def set_type_of_product
-      @type_of_product = TypeOfProduct.find(params[:id])
-    end
+  def set_type_of_product
+    @type_of_product = TypeOfProduct.find(params[:id])
+  end
 
-    def set_service
-      @service = Service.find(params[:service_id])
-    end
+  def set_service
+    @service = Service.find(params[:service_id])
+  end
 
-    def type_of_product_params
-      params.require(:type_of_product).permit(
-        :name, :title, :description, :picture_url,
-        seo_meta_attributes: [:keywords, :description]
-      ).merge service_id: params[:service_id]
-    end
+  def type_of_product_params
+    params.require(:type_of_product).permit(
+      :name, :title, :description, :picture_url,
+      seo_meta_attributes: [:keywords, :description]
+    ).merge service_id: params[:service_id]
+  end
 end

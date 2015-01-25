@@ -1,0 +1,80 @@
+ru:
+  application:
+    header:
+      main_page: Главная
+      contacts_page: Контакты
+      production_page: Производство
+      about_page: О компании
+      debtors: Должники
+      users_page: Пользователи
+      orders: Заказы
+    meta_data:
+      default_meta_keywords: 'Трубы, изделия, полиуретан, разного диаметра, укладка труб'
+      default_meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+  layouts:
+    application:
+      default_page_title: ПСФ Строитель
+      new_service: Новый сервис
+  sessions:
+    new:
+      please_log_in: Пожалуйста пройдите аутентификацию
+  static_pages:
+    main:
+      page_title: ПСФ Строитель / Главная
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: 'ПСФ Строитель - изготовим трубу на любой вкус'
+    contacts:
+      page_title: ПСФ Строитель / Контакты
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+    production:
+      page_title: ПСФ Строитель / Производство
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+    about:
+      page_title: ПСФ Строитель / О компании
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+  orders:
+    new:
+      page_title: ПСФ Строитель / Оставить заявку
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+  services:
+    index:
+      page_title: ПСФ Строитель / Сервисы
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+    show:
+      page_title: 'ПСФ Строитель / Сервисы / %{title}'
+      meta_keywords: '%{keywords}'
+      meta_description: '%{description}'
+  type_of_products:
+    index:
+      page_title: ПСФ Строитель / Типы продукции
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+    show:
+      page_title: 'ПСФ Строитель / Типы продукции / %{title}'
+      meta_keywords: '%{keywords}'
+      meta_description: '%{description}'
+  products:
+    index:
+      page_title: ПСФ Строитель / Продукция
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+    show:
+      page_title: 'ПСФ Строитель / Продукция / %{title}'
+      meta_keywords: '%{keywords}'
+      meta_description: '%{description}'
+  debtors:
+    index:
+      debtors: Должники
+      new_debtor: Новый должник
+      page_title: ПСФ Строитель / Должники
+      meta_keywords: 'Трубы, и ещё немного труб'
+      meta_description: ПСФ Строитель - изготовим трубу на любой вкус
+    show:
+      debtors: Должники
+      page_title: 'ПСФ Строитель / Продукция / %{title}'
+

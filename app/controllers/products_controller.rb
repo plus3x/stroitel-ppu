@@ -47,22 +47,22 @@ class ProductsController < ApplicationController
 
   private
 
-    def set_product
-      @product = Product.find(params[:id])
-    end
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
-    def set_service
-      @service = Service.find(params[:service_id])
-    end
+  def set_service
+    @service = Service.find(params[:service_id])
+  end
 
-    def set_type_of_product
-      @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
-    end
+  def set_type_of_product
+    @type_of_product = TypeOfProduct.find(params[:type_of_product_id])
+  end
 
-    def product_params
-      params.require(:product).permit(
-        :name, :title, :description, :picture_url,
-        seo_meta_attributes: [:keywords, :description]
-      ).merge type_of_product_id: params[:type_of_product_id]
-    end
+  def product_params
+    params.require(:product).permit(
+      :name, :title, :description, :picture_url,
+      seo_meta_attributes: [:keywords, :description]
+    ).merge type_of_product_id: params[:type_of_product_id]
+  end
 end

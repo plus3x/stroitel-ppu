@@ -47,16 +47,16 @@ class OrdersController < ApplicationController
   end
 
   private
-    
-    def send_invoice
-      UserNotifier.invoice(order_params[:email]).deliver
-    end
 
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  def send_invoice
+    UserNotifier.invoice(order_params[:email]).deliver_now
+  end
 
-    def order_params
-      params.require(:order).permit(:email, :description)
-    end
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  def order_params
+    params.require(:order).permit(:email, :description)
+  end
 end
