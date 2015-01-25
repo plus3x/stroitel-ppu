@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
-  after_action :send_invoice, only: [:create]
+  before_action :set_order, only: %i(show edit update destroy)
+  after_action :send_invoice, only: :create
   skip_before_action :set_public_proxy_refresh
 
   # GET /orders
@@ -9,8 +9,7 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1
-  def show
-  end
+  def show() end
 
   # GET /orders/new
   def new
@@ -19,8 +18,7 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1/edit
-  def edit
-  end
+  def edit() end
 
   # POST /orders
   def create

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product,         only: [:show, :edit, :update, :destroy]
+  before_action :set_product,         only: %i(show edit update destroy)
   before_action :set_service,         except: :destroy
   before_action :set_type_of_product, except: :destroy
 
@@ -9,8 +9,7 @@ class ProductsController < ApplicationController
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/1
-  def show
-  end
+  def show() end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/new
   def new
@@ -18,8 +17,7 @@ class ProductsController < ApplicationController
   end
 
   # GET /services/:service_id/type_of_products/:type_of_product_id/products/1/edit
-  def edit
-  end
+  def edit() end
 
   # POST /services/:service_id/type_of_products/:type_of_product_id/products
   def create

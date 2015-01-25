@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
   before_action :authorize
-  before_action :set_public_proxy_refresh, only: [:show, :index]
-  before_action :set_public_fresh_when,    only: [:index, :show]
+  before_action :set_public_proxy_refresh,       only: %i(show index)
+  before_action :set_public_fresh_when_on_show,  only: :show
+  before_action :set_public_fresh_when_on_index, only: :index
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -12,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless current_user.can?(params[:action], params[:controller])
-      redirect_to main_url, notice: 'You no have permissions to do this.'
+      redirect_to main_url, notice: t('you_no_have_permissions')
     end
   end
 
@@ -21,11 +22,12 @@ class ApplicationController < ActionController::Base
     expires_in 4.hours, public: true
   end
 
-  def set_public_fresh_when
-    case params[:action]
-    when 'index' then fresh_when [requested_model.all, current_user],               public: true
-    when 'show'  then fresh_when [requested_model.find(params[:id]), current_user], public: true
-    end
+  def set_public_fresh_when_on_index
+    fresh_when [requested_model.all, current_user], public: true
+  end
+
+  def set_public_fresh_when_on_show
+    fresh_when [requested_model.find(params[:id]), current_user], public: true
   end
 
   def requested_model

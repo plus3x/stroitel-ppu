@@ -30,3 +30,4 @@ ru:
   destroy: Удалить
   back: Назад
   sign_out: покинуть систему
+  you_no_have_permissions: Вы не имеете достаточных прав

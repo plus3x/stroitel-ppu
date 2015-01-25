@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: %i(show edit update destroy)
 
   # GET /services
   def index
@@ -7,8 +7,7 @@ class ServicesController < ApplicationController
   end
 
   # GET /services/1
-  def show
-  end
+  def show() end
 
   # GET /services/new
   def new
@@ -16,8 +15,7 @@ class ServicesController < ApplicationController
   end
 
   # GET /services/1/edit
-  def edit
-  end
+  def edit() end
 
   # POST /services
   def create

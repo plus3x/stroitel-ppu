@@ -2,8 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :set_public_proxy_refresh
 
   # GET /login
-  def new
-  end
+  def new() end
 
   # POST /login
   def create

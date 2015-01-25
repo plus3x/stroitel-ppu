@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :set_fresh_when, only: %i(about contacts production)
+
   # GET /
   def main
     @services = Service.all
@@ -6,17 +8,17 @@ class StaticPagesController < ApplicationController
   end
 
   # GET /about
-  def about
-    fresh_when [File.mtime('app/views/static_pages/about.html.slim'), current_user], public: true
-  end
+  def about() end
 
   # GET /contacts
-  def contacts
-    fresh_when [File.mtime('app/views/static_pages/contacts.html.slim'), current_user], public: true
-  end
+  def contacts() end
 
   # GET /production
-  def production
-    fresh_when [File.mtime('app/views/static_pages/production.html.slim'), current_user], public: true
+  def production() end
+
+  private
+
+  def set_fresh_when
+    fresh_when [File.mtime("app/views/static_pages/#{params[:action]}.html.slim"), current_user], public: true
   end
 end

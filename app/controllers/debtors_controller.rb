@@ -1,5 +1,5 @@
 class DebtorsController < ApplicationController
-  before_action :set_debtor, only: [:show, :edit, :update, :destroy]
+  before_action :set_debtor, only: %i(show edit update destroy)
   skip_before_action :set_public_proxy_refresh
 
   # GET /debtors
@@ -8,8 +8,7 @@ class DebtorsController < ApplicationController
   end
 
   # GET /debtors/1
-  def show
-  end
+  def show() end
 
   # GET /debtors/new
   def new
@@ -17,8 +16,7 @@ class DebtorsController < ApplicationController
   end
 
   # GET /debtors/1/edit
-  def edit
-  end
+  def edit() end
 
   # POST /debtors
   def create
