@@ -3,9 +3,6 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Rails.application.load_tasks
+ENV['SOURCE_ANNOTATION_DIRECTORIES'] = 'spec,features'
 
-task :look_into_spec_folder do
-  ENV['SOURCE_ANNOTATION_DIRECTORIES'] = 'spec'
-end
-Rake::Task['notes'].enhance [:look_into_spec_folder]
+Rails.application.load_tasks

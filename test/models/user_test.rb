@@ -13,7 +13,7 @@ class UserTest < ActiveSupport::TestCase
   test 'user admin must have admin role' do
     assert users(:admin).admin?, 'Admin must have admin role'
   end
-  
+
   test 'user admin can get new services' do
     assert users(:admin).can?('new', 'services'), 'Admin must have permission to new services'
   end
@@ -21,7 +21,7 @@ class UserTest < ActiveSupport::TestCase
   test 'user manager must have manager role' do
     assert users(:manager).manager?, 'Manager must have manager role'
   end
-  
+
   test 'user manager can get new services' do
     assert users(:manager).can?('new', 'services'), 'Manager must have permission to new services'
   end

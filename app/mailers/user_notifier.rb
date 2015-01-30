@@ -8,7 +8,7 @@ class UserNotifier < ActionMailer::Base
   #
   def invoice(email)
     @manager_phone = '555-55-55'
-    
+
     mail to: email
   end
 end

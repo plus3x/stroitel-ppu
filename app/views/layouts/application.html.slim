@@ -3,14 +3,14 @@ html
   head
     title= content_for(:page_title) || t('.default_page_title')
     = favicon_link_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true, async: true
-    = javascript_include_tag 'application',               'data-turbolinks-track' => true, async: true
+    = stylesheet_link_tag    'application', 'data-turbolink-track'  => true, async: true, media: 'all'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true, async: true
     = csrf_meta_tags
-    = render 'meta_data'
-  
+    = render 'application/meta_data'
+
   body id=(controller.controller_name)
 
-    = render 'header'
+    = render 'application/header'
 
     #content
 
@@ -34,4 +34,4 @@ html
 
         #bottom_banner= image_tag('bottom-banner.png')
 
-    = render 'footer'
+    = render 'application/footer'

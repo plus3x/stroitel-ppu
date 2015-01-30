@@ -16,15 +16,16 @@ end
 
 group :test do
   gem 'shoulda'
-  # gem 'factory_girl_rails'
-  # gem 'database_cleaner'
-  # gem 'minitest'
-  # gem 'shoulda-matchers'
-  # gem 'capybara'
+  gem 'rspec-rails'
+  gem 'rspec-activemodel-mocks'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'capybara'
 end
 
 group :development do
   gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :development, :test do
