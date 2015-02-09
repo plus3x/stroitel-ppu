@@ -9,7 +9,6 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 RSpec.configure do |config|
   config.include Utilities,        type: :controller
   config.include ControllerHelper, type: :controller
-  config.include RoutingHelper,    type: :routes
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL
 
